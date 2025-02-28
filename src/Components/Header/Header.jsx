@@ -40,6 +40,8 @@ function Header({ onLoginClick }) {
       </div>
 
       <button onClick={onLoginClick}>Login</button>
+      {/*  adding a comments 
+      */}
     </>
 
     
