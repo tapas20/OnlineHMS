@@ -1,0 +1,129 @@
+.header {
+    width: 100%;
+    background-color: lightblue;
+    padding: 10px 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .navbarBrand {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbarLinks {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbarLinks li {
+    margin-left: 20px;
+  }
+  
+  .navbarLinks a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .navbarLinks a:hover {
+    color: black;
+  }
+  
+  .navbarToggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .navbarToggle span {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+  
+  .btnContainer {
+    margin-left: 88%;
+    position: relative;
+    top: 1rem;
+  }
+  
+  @media (max-width: 1200px) {
+    .btnContainer {
+      margin-left: 80%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .btnContainer {
+      margin-left: 70%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbarLinks {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #333;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .navbarLinks.active {
+      transform: translateX(0);
+    }
+  
+    .navbarLinks li {
+      margin: 10px 0;
+    }
+  
+    .navbarToggle {
+      display: flex;
+    }
+  
+    .navbarToggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+  
+    .navbarToggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .navbarToggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  
+    .btnContainer {
+      margin-left: 60%;
+      top: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .btnContainer {
+      margin-left: 50%;
+      top: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .btnContainer {
+      margin-left: 40%;
+      top: 0.5rem;
+    }
+  }
