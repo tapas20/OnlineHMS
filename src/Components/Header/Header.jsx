@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom";
 
 const Header = () => {
-  // modalType can be "login" or "signup" or null (closed)
   const [modalType, setModalType] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const toggleModal = (type) => {
-    // if the same type is clicked again, close the modal
     if (modalType === type) {
       setModalType(null);
     } else {
@@ -20,10 +22,9 @@ const Header = () => {
 
   return (
     <>
-   
-   {modalType && (
-        <div className={styles.modal}>
-          <div className={styles["modal-dialog"]}>
+      {modalType && (
+        <div className={styles.modal} onClick={closeModal}>
+          <div className={styles["modal-dialog"]} onClick={(e) => e.stopPropagation()}>
             <div className={styles["modal-header"]}>
               {modalType === "login" ? (
                 <>
@@ -60,18 +61,26 @@ const Header = () => {
         <div className={styles["navbar-brand"]}>
           <img src="./Images/HealthCare.png" className={styles.logo} alt="Health Logo" />
         </div>
-        <ul className={styles["navbar-nav"]}>
+
+        <div className={styles["menu-toggle"]} onClick={toggleMenu}>
+          {isMenuOpen ? '✖' : '☰'}
+        </div>
+
+        <ul className={`${styles["navbar-nav"]} ${isMenuOpen ? styles.active : ''}`}>
+       
           <li className={styles["nav-item"]}>
             <a className={styles.active} href="#">Home</a>
           </li>
           <li className={styles["nav-item"]}>
-            <a href="#">AboutUs</a>
+            <a href="#">About Us</a>
           </li>
           <li className={styles["nav-item"]}>
-            <a className={styles.disabled} href="#">ContactUs</a>
-          </li>
-        </ul>
-        <form className={styles["button-form"]}>
+            <a className={styles.disabled} href="#">Contact Us</a>
+          </li> 
+          </ul>
+
+          
+    <form className={styles["button-form"]}>
           <button type="button" onClick={() => toggleModal("signup")}>
             SignUp
           </button>
@@ -79,6 +88,9 @@ const Header = () => {
             Login
           </button>
         </form>
+      
+
+      
       </nav>
     </>
   );
