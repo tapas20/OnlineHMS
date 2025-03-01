@@ -6,10 +6,14 @@ import Header from './Components/Header/Header'
 import Footer from  './Components/Footer/Footer'
 import About from   './Pages/About/About'
 import Contact from './Pages/Contact/Contact'
-import Login from './Pages/Authentcation/Login/Login'
-import AdminLogin from './Pages/Authentcation/Admin_Login/Admin_Login'
-import DoctorLogin from './Pages/Authentcation/Doctor_Login/Doctor_Login'
-import PatientLogin from './Pages/Authentcation/Patient_Login/Patient_Login'
+
+
+// import LoginDoctor from "./Components/LoginDoctor"
+// import LoginPatient from "./Components/LoginPatient"
+// import SignupDoctor from "./Components/SignupDoctor"
+// import SignupPatient from "./Components/SignupPatient"
+
+
 
 function App() {
   const [showLogin, setShowLogin] = useState(false)
@@ -19,19 +23,24 @@ function App() {
       <BrowserRouter>
         <Header/>
         <Routes>
-          <Route path="/" element={<Landing />}>
+          <Route path="/" element={<Landing />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="Login"  >
-              <Route path="admin" element={<AdminLogin />} />
-              <Route path="doctor" element={<DoctorLogin />} />
-              <Route path="patient" element={<PatientLogin />} />
-          </Route>
+
+            {/* <Route path="/logindoctor" element={<LoginDoctor />} />
+            <Route path="/loginpatient" element={<LoginPatient />} />
+            <Route path="/signupdoctor" element={<SignupDoctor />} />
+            <Route path="/signuppatient" element={<SignupPatient />} /> */}
             
-          </Route>
+          
+    
+              
+        
+            
+         
         </Routes>
         <Footer/>
-        {showLogin && <Login onClose={() => setShowLogin(false)} />}
+   
       </BrowserRouter>
 
     </>
