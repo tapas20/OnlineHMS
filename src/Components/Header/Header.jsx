@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
+import {Link} from "react-router-dom"
 
 
 const Header = () => {
@@ -24,19 +25,19 @@ const Header = () => {
               {modalType === "login" ? (
                 <>
                   <h6 className={styles["modal-title"]}>
-                  <a href="">Login as a Doctor</a>
+                  <Link to ="/logindoctor">Login as a Doctor</Link>
                   </h6>
                   <h6 className={styles["modal-title"]}>
-                    <a href="#">Login as a Patient </a>
+                    <Link to ="/loginpatient">Login as a Patient </Link>
                   </h6>
                 </>
               ) : (
                 <>
                   <h6 className={styles["modal-title"]}>
-                    <a href="#">SignUp as a Doctor</a>
+                    <Link to="/signupdoctor">SignUp as a Doctor</Link>
                   </h6>
                   <h6 className={styles["modal-title"]}>
-                    <a href="#">SignUp as a Patient</a>
+                    <Link to ="/signuppatient">SignUp as a Patient</Link>
                   </h6>
                 </>
               )}
