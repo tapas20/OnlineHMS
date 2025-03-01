@@ -16,43 +16,46 @@ const Header = () => {
     }
   };
 
+  const closeModal = () => setModalType(null);
+
   return (
     <>
-      {modalType && (
+   
+   {modalType && (
         <div className={styles.modal}>
           <div className={styles["modal-dialog"]}>
             <div className={styles["modal-header"]}>
               {modalType === "login" ? (
                 <>
                   <h6 className={styles["modal-title"]}>
-                  <Link to ="/logindoctor">Login as a Doctor</Link>
+                    <Link to="/logindoctor" onClick={closeModal}>
+                      Login as a Doctor
+                    </Link>
                   </h6>
                   <h6 className={styles["modal-title"]}>
-                    <Link to ="/loginpatient">Login as a Patient </Link>
+                    <Link to="/loginpatient" onClick={closeModal}>
+                      Login as a Patient
+                    </Link>
                   </h6>
                 </>
               ) : (
                 <>
                   <h6 className={styles["modal-title"]}>
-                    <Link to="/signupdoctor">SignUp as a Doctor</Link>
+                    <Link to="/signupdoctor" onClick={closeModal}>
+                      SignUp as a Doctor
+                    </Link>
                   </h6>
                   <h6 className={styles["modal-title"]}>
-                    <Link to ="/signuppatient">SignUp as a Patient</Link>
+                    <Link to="/signuppatient" onClick={closeModal}>
+                      SignUp as a Patient
+                    </Link>
                   </h6>
                 </>
               )}
-              <button 
-                type="button" 
-                className={styles["btn-secondary"]} 
-                onClick={() => setModalType(null)}
-              >
-                x
-              </button>
             </div>
           </div>
         </div>
       )}
-
       <nav className={styles.navbar}>
         <div className={styles["navbar-brand"]}>
           <img src="./Images/HealthCare.png" className={styles.logo} alt="Health Logo" />
