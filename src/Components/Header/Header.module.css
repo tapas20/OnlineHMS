@@ -8,12 +8,12 @@
   background-color: #e9ecef;
   padding: 10px 20px;
 
-  max-width: 1200px;
+  
   margin: 0 auto;
   border-radius: 10px;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-   margin-top: 20px;
+   margin-top: 10px;
    z-index: 1000;
 }
 .logo {
