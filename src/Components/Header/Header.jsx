@@ -62,11 +62,8 @@ const Header = () => {
           <img src="./Images/HealthCare.png" className={styles.logo} alt="Health Logo" />
         </div>
 
-        <div className={styles["menu-toggle"]} onClick={toggleMenu}>
-          {isMenuOpen ? '✖' : '☰'}
-        </div>
-
-        <ul className={`${styles["navbar-nav"]} ${isMenuOpen ? styles.active : ''}`}>
+<div className={styles["navbar-brand-0"]}>
+  <ul className={`${styles["navbar-nav"]} ${isMenuOpen ? styles.active : ''}`}>
        
           <li className={styles["nav-item"]}>
             <a className={styles.active} href="#">Home</a>
@@ -76,11 +73,10 @@ const Header = () => {
           </li>
           <li className={styles["nav-item"]}>
             <a className={styles.disabled} href="#">Contact Us</a>
-          </li> 
-          </ul>
-
+          </li>   
           
-    <form className={styles["button-form"]}>
+          
+         <form className={styles["button-form"]}>
           <button type="button" onClick={() => toggleModal("signup")}>
             SignUp
           </button>
@@ -88,6 +84,14 @@ const Header = () => {
             Login
           </button>
         </form>
+          </ul>
+</div>
+        
+          
+
+        <div className={styles["menu-toggle"]} onClick={toggleMenu}>
+          {isMenuOpen ? '✖' : '☰'}
+        </div>
       
 
       
