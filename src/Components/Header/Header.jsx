@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link ,NavLink} from "react-router-dom";
 
 const Header = () => {
   const [modalType, setModalType] = useState(null);
@@ -75,8 +75,15 @@ const Header = () => {
             <a href="#">About Us</a>
           </li>
           <li className={styles["nav-item"]}>
-            <a className={styles.disabled} href="#">Contact Us</a>
-          </li> 
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? styles.active : styles.disabled
+              }
+            >
+              ContactUs
+            </NavLink>
+          </li>
           </ul>
 
           
