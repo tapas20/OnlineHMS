@@ -1,0 +1,118 @@
+.landing {
+    height: 100vh;
+    
+  }
+  
+  .landingimg {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .landingimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
+
+  .overlayText {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    
+    max-width: 80%;
+  }
+  .main{
+    font-size:24px ;
+    color: #001122;
+    font-weight: 400;
+  }
+.mainp{
+  font-size: 16px;
+  color: black;
+}
+
+
+
+.landingText {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  
+  padding: 20px;
+}
+
+.landingText span {
+  max-width: 80%;
+  display: inline-block;
+}
+
+
+.highlight1 {
+  color: #db806c; 
+}
+
+.highlight2 {
+  color: #28a745; 
+}
+
+.highlight3 {
+  color: #007bff; 
+}
+
+@media (max-width: 768px) {
+  .landingText {
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landingText {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+  @media (max-width: 768px) {
+    .overlayText {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .overlayText h1 {
+      font-size: 18px;
+    }
+  
+    .overlayText p {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .overlayText {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .overlayText h1 {
+      font-size: 16px;
+    }
+  
+    .overlayText p {
+      font-size: 12px;
+    }
+  }
+  
