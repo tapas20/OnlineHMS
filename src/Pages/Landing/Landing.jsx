@@ -31,6 +31,9 @@ function Landing() {
 
     <h1>this is the aout page </h1>
     <About/>
+    <div className={styles.boxx}>
+        this is htre box
+    </div>
     </>
   )
 }
