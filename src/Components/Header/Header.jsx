@@ -69,7 +69,6 @@ const Header = () => {
           />
         </div>
 
-<<<<<<< HEAD
         <div className={styles["menu-toggle"]} onClick={toggleMenu}>
           {isMenuOpen ? "✖" : "☰"}
         </div>
@@ -79,11 +78,6 @@ const Header = () => {
             isMenuOpen ? styles.active : ""
           }`}
         >
-=======
-<div className={styles["navbar-brand-0"]}>
-  <ul className={`${styles["navbar-nav"]} ${isMenuOpen ? styles.active : ''}`}>
-       
->>>>>>> c97bc74ba1250ef50d18fedb7428e2c7ef5754c3
           <li className={styles["nav-item"]}>
             <a className={styles.active} href="/">
               Home
@@ -93,10 +87,6 @@ const Header = () => {
             <a href="#">About Us</a>
           </li>
           <li className={styles["nav-item"]}>
-<<<<<<< HEAD
-            <a className={styles.disabled} href="#">Contact Us</a>
-          </li>   
-=======
             <NavLink
               to="/contact"
               className={({ isActive }) =>
@@ -108,14 +98,7 @@ const Header = () => {
           </li>
         </ul>
 
-<<<<<<< HEAD
         <form className={styles["button-form"]}>
-=======
->>>>>>> a8ed413cdf1e4c4bca6dc8a8d8e9dcdab323c9be
-          
-          
-         <form className={styles["button-form"]}>
->>>>>>> c97bc74ba1250ef50d18fedb7428e2c7ef5754c3
           <button type="button" onClick={() => toggleModal("signup")}>
             SignUp
           </button>
@@ -123,20 +106,6 @@ const Header = () => {
             Login
           </button>
         </form>
-<<<<<<< HEAD
-=======
-          </ul>
-</div>
-        
-          
-
-        <div className={styles["menu-toggle"]} onClick={toggleMenu}>
-          {isMenuOpen ? '✖' : '☰'}
-        </div>
-      
-
-      
->>>>>>> c97bc74ba1250ef50d18fedb7428e2c7ef5754c3
       </nav>
     </>
   );
