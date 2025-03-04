@@ -1,17 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Appointment = () => {
   return (
     <div class="appointment bg-[url('https://thumbs.dreamstime.com/b/doctors-group-medical-over-blue-clinic-background-88012369.jpg')] bg-cover bg-center bg-no-repeat w-full h-screen flex items-center justify-start">
-    <div class="appointment0 mx-auto ml-36">
-      <h2 class="text-green-800">Welcome to Hospital Management</h2>
-      <h1 class="text-4xl font-bold">We Take care Our <br/>Patients Health</h1>
-      <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est expedita <br/>sapiente laudantium molestias fugiat asperiores aperiam architecto facilis,<br/> vero placeat quia libero dolores maxime exercitationem laborum! <br/>Saepe magni nisi libero!</p>
-      <div class="mt-6 space-x-4">
-        <button class="h-10 px-4 bg-green-600 text-white font-bold rounded-md">Get Appointment details</button>
-        <button class="h-10 px-4 bg-green-600 text-white font-bold rounded-md">Book Appointment</button>
-      </div>
+    <div class="appointment0 mx-4 md:mx-auto md:ml-36 text-center md:text-left">
+    <h2 class="text-green-800 text-lg md:text-2xl">Welcome to Hospital Management</h2>
+    <h1 class="text-2xl md:text-4xl font-bold mt-2">We Take Care of Our <br class="hidden md:inline"/>Patients' Health</h1>
+    <p class="mt-4 text-sm md:text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est expedita <br class="hidden md:inline"/>sapiente laudantium molestias fugiat asperiores aperiam architecto facilis,<br class="hidden md:inline"/> vero placeat quia libero dolores maxime exercitationem laborum! <br class="hidden md:inline"/>Saepe magni nisi libero!</p>
+    <div class="mt-6 space-y-2 md:space-y-0 md:space-x-4 flex flex-col md:flex-row items-center md:items-start">
+      <button class="h-10 px-4 md:w-auto bg-green-600 text-white font-bold rounded-md">Get Appointment Details</button>
+      <button class="h-10 px-4  md:w-auto bg-green-600 text-white font-bold rounded-md">Book Appointment</button>
     </div>
+  </div>
   </div>
   
   )

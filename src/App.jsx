@@ -10,6 +10,7 @@ import LoginPatient from "./Pages/Authentcation/Patient_Login/LoginPatient";
 import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Appointment from "./Pages/Appointment/Appointment";
+import BookAppointment from "./Pages/BookAppointment/BookAppointment"
 import "./App.module.css"; // Make sure the CSS path is correct
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/signupdoctor" element={<SignupDoctor />} />
         <Route path="/signuppatient" element={<SignupPatient />} />
         <Route path="/appointment" element={<Appointment/>}/>
+        <Route path="/bookappointment" element={<BookAppointment/>}/>
       </Routes>
 
       <Footer />
