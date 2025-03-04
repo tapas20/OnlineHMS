@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import { Link ,NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [modalType, setModalType] = useState(null);
@@ -24,32 +24,35 @@ const Header = () => {
     <>
       {modalType && (
         <div className={styles.modal} onClick={closeModal}>
-          <div className={styles["modal-dialog"]} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles["modal-dialog"]}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={styles["modal-header"]}>
               {modalType === "login" ? (
                 <>
                   <h6 className={styles["modal-title"]}>
-                    <Link to="/logindoctor" onClick={closeModal}>
+                    <NavLink to="/logindoctor" onClick={closeModal}>
                       Login as a Doctor
-                    </Link>
+                    </NavLink>
                   </h6>
                   <h6 className={styles["modal-title"]}>
-                    <Link to="/loginpatient" onClick={closeModal}>
+                    <NavLink to="/loginpatient" onClick={closeModal}>
                       Login as a Patient
-                    </Link>
+                    </NavLink>
                   </h6>
                 </>
               ) : (
                 <>
                   <h6 className={styles["modal-title"]}>
-                    <Link to="/signupdoctor" onClick={closeModal}>
+                    <NavLink to="/signupdoctor" onClick={closeModal}>
                       SignUp as a Doctor
-                    </Link>
+                    </NavLink>
                   </h6>
                   <h6 className={styles["modal-title"]}>
-                    <Link to="/signuppatient" onClick={closeModal}>
+                    <NavLink to="/signuppatient" onClick={closeModal}>
                       SignUp as a Patient
-                    </Link>
+                    </NavLink>
                   </h6>
                 </>
               )}
@@ -59,17 +62,26 @@ const Header = () => {
       )}
       <nav className={styles.navbar}>
         <div className={styles["navbar-brand"]}>
-          <img src="./Images/HealthCare.png" className={styles.logo} alt="Health Logo" />
+          <img
+            src="./Images/HealthCare.png"
+            className={styles.logo}
+            alt="Health Logo"
+          />
         </div>
 
         <div className={styles["menu-toggle"]} onClick={toggleMenu}>
-          {isMenuOpen ? '✖' : '☰'}
+          {isMenuOpen ? "✖" : "☰"}
         </div>
 
-        <ul className={`${styles["navbar-nav"]} ${isMenuOpen ? styles.active : ''}`}>
-       
+        <ul
+          className={`${styles["navbar-nav"]} ${
+            isMenuOpen ? styles.active : ""
+          }`}
+        >
           <li className={styles["nav-item"]}>
-            <a className={styles.active} href="#">Home</a>
+            <a className={styles.active} href="/">
+              Home
+            </a>
           </li>
           <li className={styles["nav-item"]}>
             <a href="#">About Us</a>
@@ -84,10 +96,9 @@ const Header = () => {
               ContactUs
             </NavLink>
           </li>
-          </ul>
+        </ul>
 
-          
-    <form className={styles["button-form"]}>
+        <form className={styles["button-form"]}>
           <button type="button" onClick={() => toggleModal("signup")}>
             SignUp
           </button>
@@ -95,9 +106,6 @@ const Header = () => {
             Login
           </button>
         </form>
-      
-
-      
       </nav>
     </>
   );

@@ -4,7 +4,7 @@ import Landing from "./Pages/Landing/Landing";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import About from "./Pages/About/About";
-import Contact from "./Pages/Contact/Contact";
+import Contact from "./pages/Contact/Contact";
 import LoginDoctor from "./Pages/Authentcation/Doctor_Login/LoginDoctor";
 import LoginPatient from "./Pages/Authentcation/Patient_Login/LoginPatient";
 import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
