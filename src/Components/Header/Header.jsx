@@ -179,12 +179,9 @@ const Header = () => {
         <div className="flex items-center">
           <img src="./Images/HealthCare.png" className="h-16 md:h-20" alt="Health Logo" />
         </div>
- main
+
         {/* Hamburger Menu for Mobile */}
         <div className="text-2xl cursor-pointer md:hidden" onClick={toggleMenu}>
-
-        <div className={styles["menu-toggle"]} onClick={toggleMenu}>
- main
           {isMenuOpen ? "✖" : "☰"}
         </div>
 
@@ -194,7 +191,6 @@ const Header = () => {
             isMenuOpen ? "block" : "hidden"
           }`}
         >
- main
           <li>
             <NavLink
               to="/"
@@ -204,10 +200,6 @@ const Header = () => {
                 } hover:text-blue-600 transition-all`
               }
             >
-
-          <li className={styles["nav-item"]}>
-            <a className={styles.active} href="/">
- main
               Home
             </NavLink>
           </li>
@@ -216,11 +208,7 @@ const Header = () => {
               About Us
             </NavLink>
           </li>
- main
           <li>
-
-          <li className={styles["nav-item"]}>
- main
             <NavLink
               to="/contact"
               className={({ isActive }) =>
@@ -234,17 +222,12 @@ const Header = () => {
           </li>
         </ul>
 
- main
         {/* Login/Signup Buttons */}
         <div className="hidden md:flex space-x-4">
           <button
             onClick={() => toggleModal("signup")}
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all"
           >
-
-        <form className={styles["button-form"]}>
-          <button type="button" onClick={() => toggleModal("signup")}>
- main
             SignUp
           </button>
           <button
@@ -253,11 +236,7 @@ const Header = () => {
           >
             Login
           </button>
- main
         </div>
-
-        </form>
- main
       </nav>
     </>
   );
