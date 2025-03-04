@@ -124,6 +124,10 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const toggleModal = (type) => {
     if (modalType === type) {
       setModalType(null);
@@ -194,6 +198,7 @@ const Header = () => {
           <li>
             <NavLink
               to="/"
+              onClick={closeMenu}
               className={({ isActive }) =>
                 `block p-3 font-semibold rounded-md ${
                   isActive ? "text-blue-600" : "text-gray-800"
@@ -204,13 +209,14 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="block p-3 font-semibold text-gray-800 hover:text-blue-600">
+            <NavLink to="/about" onClick={closeMenu} className="block p-3 font-semibold text-gray-800 hover:text-blue-600">
               About Us
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/contact"
+              onClick={closeMenu}
               className={({ isActive }) =>
                 `block p-3 font-semibold rounded-md ${
                   isActive ? "text-blue-600" : "text-gray-800"

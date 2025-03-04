@@ -125,13 +125,13 @@ function LoginPatient() {
               </div>
             </>
           )}
-
-          <button
+<Link to="/appointment">  <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
           >
             Login
-          </button>
+          </button></Link>
+        
         </form>
 
         <div className="mt-6 text-center">
