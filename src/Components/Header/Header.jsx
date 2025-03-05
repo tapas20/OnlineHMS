@@ -226,19 +226,42 @@ const Header = () => {
               Contact Us
             </NavLink>
           </li>
+          {/* Login/Signup Buttons for Mobile */}
+          <li className="block md:hidden">
+            <button
+              onClick={() => {
+                toggleModal("signup");
+                closeMenu();
+              }}
+              className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all mt-2"
+            >
+              SignUp
+            </button>
+          </li>
+          <li className="block md:hidden">
+            <button
+              onClick={() => {
+                toggleModal("login");
+                closeMenu();
+              }}
+              className="w-full bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all mt-2"
+            >
+              Login
+            </button>
+          </li>
         </ul>
 
-        {/* Login/Signup Buttons */}
+        {/* Login/Signup Buttons for Desktop */}
         <div className="hidden md:flex space-x-4">
           <button
             onClick={() => toggleModal("signup")}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all"
+            className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all"
           >
             SignUp
           </button>
           <button
             onClick={() => toggleModal("login")}
-            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all"
+            className="cursor-pointer bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all"
           >
             Login
           </button>

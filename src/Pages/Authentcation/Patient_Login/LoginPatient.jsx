@@ -1,28 +1,31 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function LoginPatient() {
-  const [loginMethod, setLoginMethod] = useState('password'); // 'password' or 'otp'
+  const [loginMethod, setLoginMethod] = useState("password"); // 'password' or 'otp'
   const [formData, setFormData] = useState({
-    userId: '',
-    password: '',
-    email: '',
-    otp: '',
+    userId: "",
+    password: "",
+    email: "",
+    otp: "",
   });
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (loginMethod === 'password') {
-      console.log('Patient Login with Password:', {
+    if (loginMethod === "password") {
+      console.log("Patient Login with Password:", {
         userId: formData.userId,
         password: formData.password,
       });
     } else {
-      console.log('Patient Login with OTP:', {
+      console.log("Patient Login with OTP:", {
         email: formData.email,
         otp: formData.otp,
       });
     }
+    navigate("/appointment");
   };
 
   return (
@@ -35,21 +38,21 @@ function LoginPatient() {
         {/* Toggle between Password and OTP Login */}
         <div className="flex justify-center mb-6">
           <button
-            onClick={() => setLoginMethod('password')}
+            onClick={() => setLoginMethod("password")}
             className={`px-4 py-2 rounded-l-lg ${
-              loginMethod === 'password'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-700'
+              loginMethod === "password"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-700"
             }`}
           >
             Password
           </button>
           <button
-            onClick={() => setLoginMethod('otp')}
+            onClick={() => setLoginMethod("otp")}
             className={`px-4 py-2 rounded-r-lg ${
-              loginMethod === 'otp'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-700'
+              loginMethod === "otp"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-700"
             }`}
           >
             OTP
@@ -58,7 +61,7 @@ function LoginPatient() {
 
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {loginMethod === 'password' ? (
+          {loginMethod === "password" ? (
             <>
               <div>
                 <label className="block text-sm font-medium text-gray-700">
@@ -125,29 +128,25 @@ function LoginPatient() {
               </div>
             </>
           )}
-<Link to="/appointment">  <button
+          <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+            className="cursor-pointer w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
           >
             Login
-          </button></Link>
-        
+          </button>
         </form>
 
         <div className="mt-6 text-center">
-          <Link
+          <NavLink
             to="/patient-register"
             className="text-blue-600 hover:text-blue-700 text-sm"
           >
             Don't have an account? Register
-          </Link>
+          </NavLink>
         </div>
       </div>
     </div>
   );
 }
 
-
 export default LoginPatient;
- 
- 
