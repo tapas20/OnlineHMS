@@ -181,7 +181,7 @@ const Header = () => {
       <nav className="bg-gray-100 shadow-lg w-full px-6 py-4 flex justify-between items-center relative z-40 md:px-10">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="./Images/HealthCare.png" className="h-16 md:h-20" alt="Health Logo" />
+          <img src="./Images/HealthCare.png" className="h-16 md:h-16 mr-4" alt="Health Logo" />
         </div>
 
         {/* Hamburger Menu for Mobile */}
