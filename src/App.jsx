@@ -11,7 +11,7 @@ import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Appointment from "./Pages/Appointment/Appointment";
 import BookAppointment from "./Pages/BookAppointment/BookAppointment"
 
-
+import './app.module.css'
 
 import OnlineAppointment from "./Pages/Dropdownmenu/OnlineAppointment";
 import AI from "./Pages/Dropdownmenu/AI"
