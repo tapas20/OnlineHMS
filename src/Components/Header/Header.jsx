@@ -1,124 +1,27 @@
-// import React, { useState } from "react";
-// import styles from "./Header.module.css";
-// import { NavLink } from "react-router-dom";
-
-// const Header = () => {
-//   const [modalType, setModalType] = useState(null);
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setIsMenuOpen(!isMenuOpen);
-//   };
-
-//   const toggleModal = (type) => {
-//     if (modalType === type) {
-//       setModalType(null);
-//     } else {
-//       setModalType(type);
-//     }
-//   };
-
-//   const closeModal = () => setModalType(null);
-
-//   return (
-//     <>
-//       {modalType && (
-//         <div className={styles.modal} onClick={closeModal}>
-//           <div
-//             className={styles["modal-dialog"]}
-//             onClick={(e) => e.stopPropagation()}
-//           >
-//             <div className={styles["modal-header"]}>
-//               {modalType === "login" ? (
-//                 <>
-//                   <h6 className={styles["modal-title"]}>
-//                     <NavLink to="/logindoctor" onClick={closeModal}>
-//                       Login as a Doctor
-//                     </NavLink>
-//                   </h6>
-//                   <h6 className={styles["modal-title"]}>
-//                     <NavLink to="/loginpatient" onClick={closeModal}>
-//                       Login as a Patient
-//                     </NavLink>
-//                   </h6>
-//                 </>
-//               ) : (
-//                 <>
-//                   <h6 className={styles["modal-title"]}>
-//                     <NavLink to="/signupdoctor" onClick={closeModal}>
-//                       SignUp as a Doctor
-//                     </NavLink>
-//                   </h6>
-//                   <h6 className={styles["modal-title"]}>
-//                     <NavLink to="/signuppatient" onClick={closeModal}>
-//                       SignUp as a Patient
-//                     </NavLink>
-//                   </h6>
-//                 </>
-//               )}
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//       <nav className={styles.navbar}>
-//         <div className={styles["navbar-brand"]}>
-//           <img
-//             src="./Images/HealthCare.png"
-//             className={styles.logo}
-//             alt="Health Logo"
-//           />
-//         </div>
-
-//         <div className={styles["menu-toggle"]} onClick={toggleMenu}>
-//           {isMenuOpen ? "✖" : "☰"}
-//         </div>
-
-//         <ul
-//           className={`${styles["navbar-nav"]} ${
-//             isMenuOpen ? styles.active : ""
-//           }`}
-//         >
-//           <li className={styles["nav-item"]}>
-//             <a className={styles.active} href="/">
-//               Home
-//             </a>
-//           </li>
-//           <li className={styles["nav-item"]}>
-//             <a href="#">About Us</a>
-//           </li>
-//           <li className={styles["nav-item"]}>
-//             <NavLink
-//               to="/contact"
-//               className={({ isActive }) =>
-//                 isActive ? styles.active : styles.disabled
-//               }
-//             >
-//               ContactUs
-//             </NavLink>
-//           </li>
-//         </ul>
-
-//         <form className={styles["button-form"]}>
-//           <button type="button" onClick={() => toggleModal("signup")}>
-//             SignUp
-//           </button>
-//           <button type="button" onClick={() => toggleModal("login")}>
-//             Login
-//           </button>
-//         </form>
-//       </nav>
-//     </>
-//   );
-// };
-
-// export default Header;
-
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [modalType, setModalType] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdownMenu = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -153,21 +56,41 @@ const Header = () => {
             <div className="space-y-4">
               {modalType === "login" ? (
                 <>
-                  <h6 className="text-lg font-semibold text-gray-800 border-b pb-2">Login Options</h6>
-                  <NavLink to="/logindoctor" onClick={closeModal} className="block p-3 border rounded-md hover:bg-blue-50">
+                  <h6 className="text-lg font-semibold text-gray-800 border-b pb-2">
+                    Login Options
+                  </h6>
+                  <NavLink
+                    to="/logindoctor"
+                    onClick={closeModal}
+                    className="block p-3 border rounded-md hover:bg-blue-50"
+                  >
                     Login as a Doctor
                   </NavLink>
-                  <NavLink to="/loginpatient" onClick={closeModal} className="block p-3 border rounded-md hover:bg-green-50">
+                  <NavLink
+                    to="/loginpatient"
+                    onClick={closeModal}
+                    className="block p-3 border rounded-md hover:bg-green-50"
+                  >
                     Login as a Patient
                   </NavLink>
                 </>
               ) : (
                 <>
-                  <h6 className="text-lg font-semibold text-gray-800 border-b pb-2">SignUp Options</h6>
-                  <NavLink to="/signupdoctor" onClick={closeModal} className="block p-3 border rounded-md hover:bg-blue-50">
+                  <h6 className="text-lg font-semibold text-gray-800 border-b pb-2">
+                    SignUp Options
+                  </h6>
+                  <NavLink
+                    to="/signupdoctor"
+                    onClick={closeModal}
+                    className="block p-3 border rounded-md hover:bg-blue-50"
+                  >
                     SignUp as a Doctor
                   </NavLink>
-                  <NavLink to="/signuppatient" onClick={closeModal} className="block p-3 border rounded-md hover:bg-green-50">
+                  <NavLink
+                    to="/signuppatient"
+                    onClick={closeModal}
+                    className="block p-3 border rounded-md hover:bg-green-50"
+                  >
                     SignUp as a Patient
                   </NavLink>
                 </>
@@ -181,7 +104,11 @@ const Header = () => {
       <nav className="bg-gray-100 shadow-lg w-full px-6 py-4 flex justify-between items-center relative z-40 md:px-10">
         {/* Logo */}
         <div className="flex items-center">
-          <img src="./Images/HealthCare.png" className="h-16 md:h-16 mr-4" alt="Health Logo" />
+          <img
+            src="./Images/HealthCare.png"
+            className="h-16 md:h-16 mr-4"
+            alt="Health Logo"
+          />
         </div>
 
         {/* Hamburger Menu for Mobile */}
@@ -209,7 +136,11 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" onClick={closeMenu} className="block p-3 font-semibold text-gray-800 hover:text-blue-600">
+            <NavLink
+              to="/about"
+              onClick={closeMenu}
+              className="block p-3 font-semibold text-gray-800 hover:text-blue-600"
+            >
               About Us
             </NavLink>
           </li>
@@ -226,6 +157,60 @@ const Header = () => {
               Contact Us
             </NavLink>
           </li>
+          <div className="relative inline-block text-left" ref={dropdownRef}>
+            <button
+              onClick={toggleDropdownMenu}
+              className="text-black px-4 py-3 font-semibold rounded-2xl"
+            >
+              Our Services
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute  mt-2 w-48 bg-white rounded-2xl shadow-xl max-h-60 overflow-y-auto">
+                <ul>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <NavLink
+                      to="/onlineappointment"
+                      onClick={toggleDropdownMenu}
+                    >
+                      1-Online appointment systems
+                    </NavLink>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <NavLink to="/ai" onClick={toggleDropdownMenu}>
+                      2-AI generated prescription according to the symptoms
+                    </NavLink>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    3-Smart Contract -Based Payments
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    4-Online Home service Treatment (done by pharmacist and
+                    doctors)
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    5-Electronic Health Record (EHRs)
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    6-Telemedicine
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    7-Practice management portal for doctors (Online practice
+                    for doctors like online Internship)
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    8-Electronic Prescription System
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    9-Online Medicine Delivery
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    10-Blood Bank Store and Blood Donate tracking system
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+
           {/* Login/Signup Buttons for Mobile */}
           <li className="block md:hidden">
             <button

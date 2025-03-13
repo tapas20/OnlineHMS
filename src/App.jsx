@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./Pages/Landing/Landing";
 import Header from "./Components/Header/Header";
@@ -11,7 +10,12 @@ import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Appointment from "./Pages/Appointment/Appointment";
 import BookAppointment from "./Pages/BookAppointment/BookAppointment"
-import "./App.module.css"; 
+
+
+
+import OnlineAppointment from "./Pages/Dropdownmenu/OnlineAppointment";
+import AI from "./Pages/Dropdownmenu/AI"
+
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
         <Route path="/signuppatient" element={<SignupPatient />} />
         <Route path="/appointment" element={<Appointment/>}/>
         <Route path="/bookappointment" element={<BookAppointment/>}/>
+        <Route path="/onlineappointment" element={<OnlineAppointment/>}/>
+        <Route path="/ai" element={<AI/>}/>
+
+
       </Routes>
 
       <Footer />
