@@ -37,19 +37,16 @@ function App() {
         <Route path="/loginpatient" element={<LoginPatient />} />
         <Route path="/signupdoctor" element={<SignupDoctor />} />
         <Route path="/signuppatient" element={<SignupPatient />} />
-<<<<<<< HEAD
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/bookappointment" element={<BookAppointment />} />
         <Route path="/doctordash" element={<DoctorDashboard />} />
         <Route path="/patientdash" element={<PatientDashboard />} />
-=======
         <Route path="/appointment" element={<Appointment/>}/>
         <Route path="/bookappointment" element={<BookAppointment/>}/>
         <Route path="/onlineappointment" element={<OnlineAppointment/>}/>
         <Route path="/ai" element={<AI/>}/>
 
 
->>>>>>> f05285d56d577ebcd7171045fd6d2252a27fcab9
       </Routes>
 
       <Footer />
