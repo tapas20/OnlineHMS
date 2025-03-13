@@ -9,20 +9,17 @@ import LoginPatient from "./Pages/Authentcation/Patient_Login/LoginPatient";
 import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Appointment from "./Pages/Appointment/Appointment";
-<<<<<<< HEAD
 import BookAppointment from "./Pages/BookAppointment/BookAppointment";
 import "./App.module.css"; // Make sure the CSS path is correct
 import DoctorDashboard from "./Pages/DashboardPages/DoctorDashboard";
 import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
-=======
-import BookAppointment from "./Pages/BookAppointment/BookAppointment"
+// import BookAppointment from "./Pages/BookAppointment/BookAppointment"
 
 import './app.module.css'
 
 import OnlineAppointment from "./Pages/Dropdownmenu/OnlineAppointment";
 import AI from "./Pages/Dropdownmenu/AI"
 
->>>>>>> f05285d56d577ebcd7171045fd6d2252a27fcab9
 
 function App() {
   return (
