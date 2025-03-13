@@ -121,3 +121,119 @@
     color: red;
     background-color: yellow;
   }
+
+  /* this is the css for the blog content */
+
+  .container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .blogGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .blogCard {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .blogCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .blogImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .blogContent {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .dateBadge {
+    background-color: #4caf50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    top: -20px;
+  }
+  
+  .blogTitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: -10px;
+  }
+  
+  .learnMore {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .learnMore:hover {
+    background-color: #388e3c;
+  }
+  
+/* this is the code for the section */
+.statsContainer {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(to bottom, #fff, #d9f6fc);
+}
+
+.statsTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.statsGrid {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: 40px;
+  font-weight: bold;
+  color: #0077b6;
+}
+
+.statText {
+  font-size: 16px;
+  margin-top: 5px;
+}

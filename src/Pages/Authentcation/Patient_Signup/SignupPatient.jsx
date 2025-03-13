@@ -1,7 +1,8 @@
 import { useForm, Controller } from 'react-hook-form';
 import { useDropzone } from 'react-dropzone';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css'; // Import styles for phone input
+import 'react-phone-number-input/style.css';
+
 
 function SignupPatient() {
   const {
@@ -10,6 +11,7 @@ function SignupPatient() {
     formState: { errors },
     control,
   } = useForm();
+
 
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
     accept: { 'image/*': ['.jpeg', '.png', '.jpg'] },
