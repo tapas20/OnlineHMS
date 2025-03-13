@@ -1,77 +1,132 @@
 .aboutParent {
-    height: 100vh;
-    background-color: #1bbbf0;
-    color: #edf2f4;
-    padding: 40px;
-    text-align: center;
-  }
-  
-  .top h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .top span {
-    font-size: 16px;
-    display: block;
-  }
-  
-  .secondTop {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 30px 0;
-  }
-  
-  .secondTop h3 {
-    font-size: 28px;
-    margin: 0;
-  }
-  
-  .secondTop p {
-    font-size: 16px;
-    margin: 5px 0;
-  }
-  
-  .boxContainer {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-  }
-  
+  height: auto;
+  min-height: 100vh;
+  background-color: #1bbbf0;
+  color: #edf2f4;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.top h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.top span {
+  font-size: 16px;
+  display: block;
+}
+
+.secondTop {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.secondTop h3 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.secondTop p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.boxContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background-color: #003c4d;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  min-width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.box h4 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.box p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.valueContent {
+  margin-top: 40px;
+}
+
+.valueContent h3 {
+  font-size: 26px;
+}
+
+.valueContent p {
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .box {
-    background-color: #003c4d;
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    height: 55%;
+    width: 45%; /* Adjusted for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .secondTop {
+    flex-direction: column;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
-  
-  .box h4 {
-    font-size: 22px;
-    margin-bottom: 10px;
+
+  .boxContainer {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .box p {
+
+  .box {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutParent {
+    padding: 20px;
+  }
+
+  .top h3 {
+    font-size: 20px;
+  }
+
+  .top span {
     font-size: 14px;
-    line-height: 1.5;
   }
-  
-  .valueContent {
-    margin-top: 40px;
+
+  .secondTop h3 {
+    font-size: 24px;
   }
-  
+
+  .box {
+    width: 100%;
+  }
+
   .valueContent h3 {
-    font-size: 26px;
+    font-size: 22px;
   }
-  
+
   .valueContent p {
-    font-size: 16px;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
+    font-size: 14px;
   }
-  
+}

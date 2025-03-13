@@ -11,7 +11,7 @@ import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Appointment from "./Pages/Appointment/Appointment";
 import BookAppointment from "./Pages/BookAppointment/BookAppointment"
-import "./App.module.css"; // Make sure the CSS path is correct
+import "./App.module.css"; 
 
 function App() {
   return (
