@@ -2,9 +2,7 @@ import Header from '../../Components/Header/Header.jsx';
 
 export default function PatientDashboard() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <div className="min-h-screen bg-gray-50">  
       <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg shadow p-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Patient Dashboard</h1>
