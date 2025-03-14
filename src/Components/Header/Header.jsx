@@ -165,7 +165,7 @@ const Header = () => {
               Our Services
             </button>
             {isDropdownOpen && (
-              <div className="absolute  mt-2 w-48 bg-white rounded-2xl shadow-xl max-h-60 overflow-y-auto">
+              <div className="absolute mt-2 w-80 bg-white rounded-2xl shadow-xl max-h-80 overflow-y-auto">
                 <ul>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
@@ -176,35 +176,30 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
+                    2-Online Medicine Delivery
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    3-Blood Bank Store and Blood Donate tracking system
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink to="/ai" onClick={toggleDropdownMenu}>
-                      2-AI generated prescription according to the symptoms
+                      4-AI generated prescription according to the symptoms
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    3-Smart Contract -Based Payments
+                    5-Online Home service Treatment
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    4-Online Home service Treatment (done by pharmacist and
-                    doctors)
+                    6-Electronic Health Record (EHRs)
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    5-Electronic Health Record (EHRs)
+                    7-Telemedicine
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    6-Telemedicine
+                    8-Practice management portal for doctors
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    7-Practice management portal for doctors (Online practice
-                    for doctors like online Internship)
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    8-Electronic Prescription System
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    9-Online Medicine Delivery
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    10-Blood Bank Store and Blood Donate tracking system
+                    9-Electronic Prescription System
                   </li>
                 </ul>
               </div>

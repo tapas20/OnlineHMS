@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Appointment = () => {
   return (
-    <div className="appointment bg-[url('https://thumbs.dreamstime.com/b/doctors-group-medical-over-blue-clinic-background-88012369.jpg')] bg-cover bg-center bg-no-repeat w-full h-screen flex items-center justify-start">
+    <div className="appointment bg-[url('https://ochoacalderon.com/wp-content/uploads/2021/01/Doctors_0.jpg')] bg-cover bg-center bg-no-repeat w-full h-screen flex items-center justify-start">
       <div className="appointment0 mx-4 md:mx-auto md:ml-36 text-center md:text-left">
         <h2 className="text-green-800 text-lg md:text-2xl">
           Welcome to Hospital Management
