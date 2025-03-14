@@ -160,7 +160,7 @@ const Header = () => {
           <div className="relative inline-block text-left" ref={dropdownRef}>
             <button
               onClick={toggleDropdownMenu}
-              className="text-black px-4 py-3 font-semibold rounded-2xl"
+              className="cursor-pointer text-black px-4 py-3 font-semibold rounded-2xl"
             >
               Our Services
             </button>
@@ -169,17 +169,24 @@ const Header = () => {
                 <ul>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
-                      to="/onlineappointment"
+                      to="/bookappointment"
                       onClick={toggleDropdownMenu}
                     >
                       1-Online appointment systems
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    2-Online Medicine Delivery
+                    <NavLink
+                      to="/onlinemedicinedelivery"
+                      onClick={toggleDropdownMenu}
+                    >
+                      2-Online Medicine Delivery
+                    </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    3-Blood Bank Store and Blood Donate tracking system
+                    <NavLink to="/bloodbankstore" onClick={toggleDropdownMenu}>
+                      3-Blood Bank Store and Blood Donate tracking system
+                    </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink to="/ai" onClick={toggleDropdownMenu}>
@@ -187,19 +194,41 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    5-Online Home service Treatment
+                    <NavLink
+                      to="/onlinehomeservicetreatment"
+                      onClick={toggleDropdownMenu}
+                    >
+                      5-Online Home service Treatment
+                    </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    6-Electronic Health Record (EHRs)
+                    <NavLink
+                      to="/electronichealthrecord"
+                      onClick={toggleDropdownMenu}
+                    >
+                      6-Electronic Health Record (EHRs)
+                    </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    7-Telemedicine
+                    <NavLink to="/telemedicine" onClick={toggleDropdownMenu}>
+                      7-Telemedicine
+                    </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    8-Practice management portal for doctors
+                    <NavLink
+                      to="/practicemanagementportalfordoctors"
+                      onClick={toggleDropdownMenu}
+                    >
+                      8-Practice management portal for doctors
+                    </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    9-Electronic Prescription System
+                    <NavLink
+                      to="/electronicprescriptionsystem"
+                      onClick={toggleDropdownMenu}
+                    >
+                      9-Electronic Prescription System
+                    </NavLink>
                   </li>
                 </ul>
               </div>

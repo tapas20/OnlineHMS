@@ -25,7 +25,7 @@ function LoginPatient() {
         otp: formData.otp,
       });
     }
-    navigate("/appointment");
+    navigate("/patient");
   };
 
   return (

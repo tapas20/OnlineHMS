@@ -8,18 +8,22 @@ import LoginDoctor from "./Pages/Authentcation/Doctor_Login/LoginDoctor";
 import LoginPatient from "./Pages/Authentcation/Patient_Login/LoginPatient";
 import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
-import Appointment from "./Pages/Appointment/Appointment";
+import Patient from "./Pages/Patient/Patient";
 import BookAppointment from "./Pages/BookAppointment/BookAppointment";
 import "./App.module.css"; // Make sure the CSS path is correct
 import DoctorDashboard from "./Pages/DashboardPages/DoctorDashboard";
 import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
-// import BookAppointment from "./Pages/BookAppointment/BookAppointment"
 
-import './app.module.css'
+import "./app.module.css";
 
-import OnlineAppointment from "./Pages/Dropdownmenu/OnlineAppointment";
-import AI from "./Pages/Dropdownmenu/AI"
-
+import AI from "./Pages/Dropdownmenu/AI";
+import BloodBankStore from "./Pages/Dropdownmenu/BloodBankStore";
+import ElectronicHealthRecord from "./Pages/Dropdownmenu/ElectronicHealthRecord";
+import ElectronicPrescriptionSystem from "./Pages/Dropdownmenu/ElectronicPrescriptionSystem";
+import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTreatment";
+import OnlineMedicineDelivery from "./Pages/Dropdownmenu/OnlineMedicineDelivery";
+import PracticeManagementPortalForDoctors from "./Pages/Dropdownmenu/PracticeManagementPortalForDoctors";
+import Telemedicine from "./Pages/Dropdownmenu/Telemedicine";
 
 function App() {
   return (
@@ -34,16 +38,20 @@ function App() {
         <Route path="/loginpatient" element={<LoginPatient />} />
         <Route path="/signupdoctor" element={<SignupDoctor />} />
         <Route path="/signuppatient" element={<SignupPatient />} />
-        <Route path="/appointment" element={<Appointment />} />
-        <Route path="/bookappointment" element={<BookAppointment />} />
         <Route path="/doctordash" element={<DoctorDashboard />} />
         <Route path="/patientdash" element={<PatientDashboard />} />
-        <Route path="/appointment" element={<Appointment/>}/>
-        <Route path="/bookappointment" element={<BookAppointment/>}/>
-        <Route path="/onlineappointment" element={<OnlineAppointment/>}/>
-        <Route path="/ai" element={<AI/>}/>
+        <Route path="/patient" element={<Patient />} />
 
-
+        {/* Services Routes */}
+        <Route path="/bookappointment" element={<BookAppointment />} />
+        <Route path="/bloodbankstore" element={<BloodBankStore />} />
+        <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
+        <Route path="/electronicprescriptionsystem" element={<ElectronicPrescriptionSystem />} />
+        <Route path="/onlinehomeservicetreatment" element={<OnlineHomeServiceTreatment />} />
+        <Route path="/onlinemedicinedelivery" element={<OnlineMedicineDelivery />} />
+        <Route path="/practicemanagementportalfordoctors" element={<PracticeManagementPortalForDoctors />} />
+        <Route path="/telemedicine" element={<Telemedicine />} />
+        <Route path="/ai" element={<AI />} />
       </Routes>
 
       <Footer />
