@@ -9,7 +9,7 @@ import LoginPatient from "./Pages/Authentcation/Patient_Login/LoginPatient";
 import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Patient from "./Pages/Patient/Patient";
-import BookAppointment from "./Pages/BookAppointment/BookAppointment";
+import BookAppointment from "./Pages/Dropdownmenu/BookAppointment";
 import "./App.module.css"; // Make sure the CSS path is correct
 import DoctorDashboard from "./Pages/DashboardPages/DoctorDashboard";
 import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
