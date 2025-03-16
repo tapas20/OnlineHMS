@@ -17,7 +17,14 @@ import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
 import "./app.module.css";
 
 import AI from "./Pages/Dropdownmenu/AI";
-import BloodBankStore from "./Pages/Dropdownmenu/BloodBankStore";
+//Blood bank router
+import BloodBankStore from "./Pages/Dropdownmenu/BloodBankPage/BloodBankStore";
+import  Number from './Pages/Dropdownmenu/BloodBankPage/Number'
+import Otp from "./Pages/Dropdownmenu/BloodBankPage/Otp";
+import Bloodcheckup from "./Pages/Dropdownmenu/BloodBankPage/Bloodcheckup";
+import Checkup from "./Pages/Dropdownmenu/BloodBankPage/Checkup";
+import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood"
+
 import ElectronicHealthRecord from "./Pages/Dropdownmenu/ElectronicHealthRecord";
 import ElectronicPrescriptionSystem from "./Pages/Dropdownmenu/ElectronicPrescriptionSystem";
 import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTreatment";
@@ -45,6 +52,14 @@ function App() {
         {/* Services Routes */}
         <Route path="/bookappointment" element={<BookAppointment />} />
         <Route path="/bloodbankstore" element={<BloodBankStore />} />
+        <Route path="/number" element={<Number />} />
+        <Route path="/otp" element={<Otp />} />
+        <Route path="/bloodcheckup" element={<Bloodcheckup />} />
+        <Route path="/checkup" element={<Checkup />} />
+        <Route path="/receiveblood" element={<Receiveblood />} />
+
+
+
         <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
         <Route path="/electronicprescriptionsystem" element={<ElectronicPrescriptionSystem />} />
         <Route path="/onlinehomeservicetreatment" element={<OnlineHomeServiceTreatment />} />
