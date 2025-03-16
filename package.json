@@ -12,7 +12,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
     "axios": "^1.8.1",
+<<<<<<< HEAD
     "ethers": "^6.13.5",
+=======
+    "lucide-react": "^0.482.0",
+>>>>>>> 3f806396f4e0ae8090ffef6411365d9d1d1f2f4f
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-dropzone": "^14.3.8",
