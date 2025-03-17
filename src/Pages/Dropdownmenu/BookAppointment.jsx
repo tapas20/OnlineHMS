@@ -217,7 +217,7 @@ const AppointmentForm = () => {
           setContract(contractInstance);
         } catch (error) {
           console.error("Error initializing Web3:", error);
-          alert("Failed to connect to MetaMask. Please try again.");
+          // alert("Failed to connect to MetaMask. Please try again.");
         }
       } else {
         alert("Please install MetaMask to use this app!");
