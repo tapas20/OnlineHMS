@@ -24,8 +24,12 @@ import Otp from "./Pages/Dropdownmenu/BloodBankPage/Otp";
 import Bloodcheckup from "./Pages/Dropdownmenu/BloodBankPage/Bloodcheckup";
 import Checkup from "./Pages/Dropdownmenu/BloodBankPage/Checkup";
 import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood"
+import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage"
+import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage"
 
-import ElectronicHealthRecord from "./Pages/Dropdownmenu/ElectronicHealthRecord";
+
+
+import ElectronicHealthRecord from "./Pages/Dropdownmenu/HealthRecordPage/ElectronicHealthRecord";
 import ElectronicPrescriptionSystem from "./Pages/Dropdownmenu/ElectronicPrescriptionSystem";
 import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTreatment";
 import OnlineMedicineDelivery from "./Pages/Dropdownmenu/OnlineMedicineDelivery";
@@ -57,6 +61,8 @@ function App() {
         <Route path="/bloodcheckup" element={<Bloodcheckup />} />
         <Route path="/checkup" element={<Checkup />} />
         <Route path="/receiveblood" element={<Receiveblood />} />
+        <Route path="/requestpage" element={<Requestpage />} />
+        <Route path="/historypage" element={<Historypage/>} />
 
 
 
