@@ -28,8 +28,13 @@ import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage"
 import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage"
 
 
-
+//EHR page
 import ElectronicHealthRecord from "./Pages/Dropdownmenu/HealthRecordPage/ElectronicHealthRecord";
+import AllRecord from "./Pages/Dropdownmenu/HealthRecordPage/AllRecord";
+
+
+
+
 import ElectronicPrescriptionSystem from "./Pages/Dropdownmenu/ElectronicPrescriptionSystem";
 import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTreatment";
 import OnlineMedicineDelivery from "./Pages/Dropdownmenu/OnlineMedicineDelivery";
@@ -65,8 +70,10 @@ function App() {
         <Route path="/historypage" element={<Historypage/>} />
 
 
+ <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
+ <Route path="/allrecord" element={<AllRecord />} />
 
-        <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
+
         <Route path="/electronicprescriptionsystem" element={<ElectronicPrescriptionSystem />} />
         <Route path="/onlinehomeservicetreatment" element={<OnlineHomeServiceTreatment />} />
         <Route path="/onlinemedicinedelivery" element={<OnlineMedicineDelivery />} />

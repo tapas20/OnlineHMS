@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const ElectronicHealthRecord = () => {
   const [showSecondImage, setShowSecondImage] = useState(false);
@@ -6,7 +7,7 @@ const ElectronicHealthRecord = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSecondImage(true);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -56,9 +57,12 @@ const ElectronicHealthRecord = () => {
               <input type="checkbox" className="mr-2" />
               <span className="text-gray-600 text-sm">Keep me signed in</span>
             </div>
-            <button className="w-full  mt-4 bg-teal-600 text-white py-2 rounded-3xl hover:bg-teal-700 transition">
-              Sign In
-            </button>
+          
+            <NavLink to="/allrecord" className="w-full flex items-center justify-center mt-4 bg-teal-600 text-white py-2 rounded-3xl hover:bg-teal-700 transition">
+              Sign In 
+              </NavLink>
+              
+            
             <p className="mt-2 text-sm text-gray-500 cursor-pointer hover:text-teal-600">
               Forgot Password?
             </p>
