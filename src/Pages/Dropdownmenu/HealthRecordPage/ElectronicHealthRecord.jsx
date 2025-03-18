@@ -34,7 +34,7 @@ const ElectronicHealthRecord = () => {
             showSecondImage ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-6 h-auto">
+          <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-6 h-auto ">
             <h1 className="text-teal-600 text-2xl font-bold text-center">
               My Health Record
             </h1>

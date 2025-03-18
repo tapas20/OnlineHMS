@@ -16,7 +16,7 @@ const Bloodcheckup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-4">
+    <div className="flex justify-center items-center min-h-screen p-4" style={{ backgroundColor: "#FA4848" }}>
       <div className="bg-red-600 p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md relative">
         {/* Logo */}
         <div className="absolute top-4 right-4">

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const AllRecord = () => {
   return (
-    <div className="flex justify-center min-h-screen bg-teal-600 font-sans p-4 sm:p-6 md:p-8">
+    <div className="flex justify-center min-h-screen bg-teal-600 font-sans p-4 sm:p-6 md:p-8 ">
       <div className="w-full max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
         <div className="flex justify-between text-sm">
           <a href="#" className="text-teal-700">&#x2190; My health record</a>

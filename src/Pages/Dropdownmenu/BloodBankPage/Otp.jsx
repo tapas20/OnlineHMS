@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Otp = () => {
   return (
-    <div className="flex items-center justify-center  p-5 bg-gray-100">
+    <div className="flex items-center justify-center  p-5 bg-gray-100 min-h-screen" style={{ backgroundColor: "#FA4848" }} >
       <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg text-center m-5 p-6 ">
         <img src="./Images/shapes1.png" alt="Logo" className="w-30 h-30 " />
         <h2 className="text-xl font-semibold mt-4">OTP Verification</h2>

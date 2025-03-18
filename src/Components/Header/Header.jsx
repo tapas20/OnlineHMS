@@ -170,7 +170,11 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/bookappointment"
-                      onClick={toggleDropdownMenu}
+                      
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
                     >
                       1-Online appointment systems
                     </NavLink>
@@ -178,25 +182,37 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/onlinemedicinedelivery"
-                      onClick={toggleDropdownMenu}
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
                     >
                       2-Online Medicine Delivery
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink to="/bloodbankstore" onClick={toggleDropdownMenu}>
+                    <NavLink to="/bloodbankstore"  onClick={() => {
+    toggleDropdownMenu();
+    closeMenu();
+  }}>
                       3-Blood Bank Store and Blood Donate tracking system
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink to="/ai" onClick={toggleDropdownMenu}>
+                    <NavLink to="/ai"   onClick={() => {
+    toggleDropdownMenu();
+    closeMenu();
+  }}>
                       4-AI generated prescription according to the symptoms
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/onlinehomeservicetreatment"
-                      onClick={toggleDropdownMenu}
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
                     >
                       5-Online Home service Treatment
                     </NavLink>
@@ -204,20 +220,29 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/electronichealthrecord"
-                      onClick={toggleDropdownMenu}
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
                     >
                       6-Electronic Health Record (EHRs)
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink to="/telemedicine" onClick={toggleDropdownMenu}>
+                    <NavLink to="/telemedicine"   onClick={() => {
+    toggleDropdownMenu();
+    closeMenu();
+  }}>
                       7-Telemedicine
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/practicemanagementportalfordoctors"
-                      onClick={toggleDropdownMenu}
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
                     >
                       8-Practice management portal for doctors
                     </NavLink>
@@ -225,7 +250,10 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/electronicprescriptionsystem"
-                      onClick={toggleDropdownMenu}
+                    onClick={()=>{
+                      toggleDropdownMenu();
+                      closeMenu();
+                    }}
                     >
                       9-Electronic Prescription System
                     </NavLink>
