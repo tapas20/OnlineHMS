@@ -31,7 +31,7 @@ import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage"
 //EHR page
 import ElectronicHealthRecord from "./Pages/Dropdownmenu/HealthRecordPage/ElectronicHealthRecord";
 import AllRecord from "./Pages/Dropdownmenu/HealthRecordPage/AllRecord";
-
+import Reportpage from "./Pages/Dropdownmenu/HealthRecordPage/Reportpage"
 
 
 
@@ -69,10 +69,9 @@ function App() {
         <Route path="/requestpage" element={<Requestpage />} />
         <Route path="/historypage" element={<Historypage/>} />
 
-
- <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
- <Route path="/allrecord" element={<AllRecord />} />
-
+        <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
+        <Route path="/allrecord" element={<AllRecord />} />
+        <Route path="/reportpage" element={<Reportpage />} />
 
         <Route path="/electronicprescriptionsystem" element={<ElectronicPrescriptionSystem />} />
         <Route path="/onlinehomeservicetreatment" element={<OnlineHomeServiceTreatment />} />
