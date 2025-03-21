@@ -45,7 +45,7 @@ const Bloodcheckup= () => {
             onChange={handleChange}
             className="w-full bg-transparent border-b border-white outline-none py-1"
           />
-
+          
           <label className="block font-medium mt-4">Age</label>
           <input
             type="number"

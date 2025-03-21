@@ -13,9 +13,6 @@ import BookAppointment from "./Pages/Dropdownmenu/BookAppointment";
 import "./App.module.css"; // Make sure the CSS path is correct
 import DoctorDashboard from "./Pages/DashboardPages/DoctorDashboard";
 import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
-
-import "./app.module.css";
-
 import AI from "./Pages/Dropdownmenu/AI";
 //Blood bank router
 import BloodBankStore from "./Pages/Dropdownmenu/BloodBankPage/BloodBankStore";
@@ -26,14 +23,9 @@ import Checkup from "./Pages/Dropdownmenu/BloodBankPage/Checkup";
 import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood"
 import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage"
 import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage"
-
-
 //EHR page
 import ElectronicHealthRecord from "./Pages/Dropdownmenu/HealthRecordPage/ElectronicHealthRecord";
 import AllRecord from "./Pages/Dropdownmenu/HealthRecordPage/AllRecord";
-
-
-
 
 import ElectronicPrescriptionSystem from "./Pages/Dropdownmenu/ElectronicPrescriptionSystem";
 import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTreatment";
@@ -70,8 +62,8 @@ function App() {
         <Route path="/historypage" element={<Historypage/>} />
 
 
- <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
- <Route path="/allrecord" element={<AllRecord />} />
+        <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
+        <Route path="/allrecord" element={<AllRecord />} />
 
 
         <Route path="/electronicprescriptionsystem" element={<ElectronicPrescriptionSystem />} />
@@ -80,6 +72,9 @@ function App() {
         <Route path="/practicemanagementportalfordoctors" element={<PracticeManagementPortalForDoctors />} />
         <Route path="/telemedicine" element={<Telemedicine />} />
         <Route path="/ai" element={<AI />} />
+        {/* telimedicine routes are here  */}
+        <Route path="telemedicine"  element={<Telemedicine/>}/>
+        
       </Routes>
 
       <Footer />
