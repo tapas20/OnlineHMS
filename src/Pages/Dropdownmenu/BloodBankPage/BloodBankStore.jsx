@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const BloodBankStore = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-yellow-400">
+    <div className="flex items-center justify-center min-h-screen bg-red-400">
       <div className="bg-gradient-to-b from-[#FA4848] to-[#820000] text-white w-full max-w-3xl p-6 rounded-lg shadow-lg">
         <h6 className="text-2xl font-bold mt-4 text-center">Blood Bank Store</h6>
         
