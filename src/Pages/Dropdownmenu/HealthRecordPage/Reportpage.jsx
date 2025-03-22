@@ -2,7 +2,7 @@ import React from "react";
 
 const Reportpage = () => {
   return (
-    <div className="bg-teal-700 text-white font-sans min-h-screen p-4">
+    <div className="bg-teal-700 text-white font-sans min-h-screen p-4 ">
       <header className="flex flex-col sm:flex-row justify-between items-center p-4 bg-teal-700 text-white">
         <div className="flex items-center gap-4">
           <span className="text-lg">My Health Record</span>

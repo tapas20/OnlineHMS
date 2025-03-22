@@ -20,7 +20,7 @@ const Number = () => {
   };
 
   return (
-    <div className="flex justify-center bg-pink-50 items-center px-4" >
+    <div className="flex justify-center  items-center px-4 min-h-screen" style={{ backgroundColor: "#FA4848" }}>
 
       <div className="bg-white w-full max-w-md rounded-lg shadow-lg p-6 sm:p-8 md:p-10 m-10">
         {/* Image Section */}

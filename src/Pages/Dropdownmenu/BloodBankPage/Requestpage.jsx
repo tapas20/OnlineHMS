@@ -4,9 +4,9 @@ const Request = () => {
   const requests = [1, 2, 3, 4, 5]; 
 
   return (
-    <div className='flex flex-col items-center justify-center m-4 sm:m-6 md:m-10'>
-      <div className='p-4 w-full max-w-2xl'>
-        <div className='w-full h-[50px] bg-red-500 rounded-b-3xl flex items-center justify-center text-white'>
+    <div className='flex flex-col items-center min-h-screen justify-center ' style={{ backgroundColor: "#FA4848" }}>
+      <div className='p-4 w-full   max-w-2xl'>
+        <div className='w-full h-[50px] bg-red-700 rounded-b-3xl flex items-center justify-center text-white'>
           <h1 className='text-lg md:text-xl'>Requests</h1>
         </div>
         <div className='bg-gray-100 rounded-t-lg p-4 w-full'>

@@ -17,7 +17,7 @@ const Receiveblood = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-4 bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen p-4 bg-gray-100" style={{ backgroundColor: "#FA4848" }}>
       <div className="w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg">
         {/* Header */}
         <div className="bg-red-500 text-white p-4 rounded-t-2xl flex items-center justify-center">
