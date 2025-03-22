@@ -22,9 +22,7 @@ import Checkup from "./Pages/Dropdownmenu/BloodBankPage/Checkup";
 import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood"
 import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage"
 import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage"
-import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood";
-import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage";
-import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage";
+
 
 //EHR page
 import ElectronicHealthRecord from "./Pages/Dropdownmenu/HealthRecordPage/ElectronicHealthRecord";

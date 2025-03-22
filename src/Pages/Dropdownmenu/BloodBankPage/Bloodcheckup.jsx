@@ -27,56 +27,6 @@ const Bloodcheckup = () => {
 
         {/* Form Fields */}
         <div className="text-white">
-<<<<<<< HEAD
-          <label className="block font-medium">Full Name</label>
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            placeholder="Enter full name"
-            className="w-full bg-transparent border-b border-white outline-none py-1"
-          />
-
-          <label className="block font-medium mt-4">Date of Birth</label>
-          <input
-            type="date"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-            className="w-full bg-transparent border-b border-white outline-none py-1"
-          />
-          
-          <label className="block font-medium mt-4">Age</label>
-          <input
-            type="number"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            placeholder="Enter age"
-            className="w-full bg-transparent border-b border-white outline-none py-1"
-          />
-
-          <label className="block font-medium mt-4">Prevailing Health Conditions</label>
-          <input
-            type="text"
-            name="healthConditions"
-            value={formData.healthConditions}
-            onChange={handleChange}
-            placeholder="Enter health conditions"
-            className="w-full bg-transparent border-b border-white outline-none py-1"
-          />
-
-          <label className="block font-medium mt-4">Blood Group</label>
-          <input
-            type="text"
-            name="bloodGroup"
-            value={formData.bloodGroup}
-            onChange={handleChange}
-            placeholder="Enter blood group"
-            className="w-full bg-transparent border-b border-white outline-none py-1"
-          />
-=======
           {[
             { label: "Full Name", name: "fullName", type: "text", placeholder: "Enter full name" },
             { label: "Date of Birth", name: "dob", type: "date" },
@@ -96,7 +46,6 @@ const Bloodcheckup = () => {
               />
             </div>
           ))}
->>>>>>> 9e4bb1f02288ed53adfc1d85d7be3e9b9f81ce53
         </div>
 
         {/* Register Button */}
