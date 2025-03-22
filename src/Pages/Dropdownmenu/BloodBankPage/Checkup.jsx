@@ -2,9 +2,9 @@ import React from "react";
 
 const Checkup = () => {
   return (
-    <div className="flex items-center justify-center m-5 bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100" style={{ backgroundColor: "#FA4848" }}>
       {/* Wrapper to contain both background and content */}
-      <div className="relative w-[350px] h-100 bg-white shadow-lg rounded-b-3xl">
+      <div className="relative w-[350px] h-100 bg-white shadow-lg rounded-b-3xl m-5">
         {/* Background Image or Colored Header */}
         <div className="w-full h-[150px] bg-red-400 rounded-b-3xl flex flex-col items-center text-white">
           <h2 className="text-lg font-semibold mt-4">Hello Zoharin</h2>

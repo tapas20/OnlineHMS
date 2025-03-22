@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Number = () => {
-    const [mobileNumber, setMobileNumber] = useState("");
-    const navigate = useNavigate();
+  const [mobileNumber, setMobileNumber] = useState("");
+  const navigate = useNavigate();
 
-    // Function to handle input change
-    const handleInputChange = (event) => {
-      setMobileNumber(event.target.value);
-    };
+  // Function to handle input change
+  const handleInputChange = (event) => {
+    setMobileNumber(event.target.value);
+  };
 
-      // Function to handle OTP button click
+  // Function to handle OTP button click
   const handleGetOtp = () => {
     if (mobileNumber.length === 10) {
       navigate("/otp");
@@ -18,20 +18,22 @@ const Number = () => {
       alert("Please enter a valid 10-digit mobile number.");
     }
   };
+
   return (
-    <div className="flex justify-center items-center m-5  bg-gray-50 ">
-      <div className="bg-white w-80 h-120  rounded-lg shadow-lg relative">
-    
+    <div className="flex justify-center  items-center px-4 min-h-screen" style={{ backgroundColor: "#FA4848" }}>
+
+      <div className="bg-white w-full max-w-md rounded-lg shadow-lg p-6 sm:p-8 md:p-10 m-10">
+        {/* Image Section */}
        
-          <img src="./Images/shapes.png" alt="Blood Donor Logo" className="w-50 h-50" />
+          <img src="./Images/shapes.png" alt="Blood Donor Logo" className="w-32 h-32" />
        
 
         {/* Input Section */}
-        <div className="mt-1 text-center">
+        <div className="mt-6 text-center">
           <h2 className="text-gray-700 text-lg font-semibold">
             Enter your mobile number
           </h2>
-          <div className="mt-4 mx-10 flex items-center border border-black  rounded-full px-1 py-2">
+          <div className="mt-4 flex items-center border border-black rounded-full px-3 py-2 w-full">
             <span className="text-red-500 font-semibold">+91</span>
             <input
               type="text"
@@ -44,11 +46,11 @@ const Number = () => {
         </div>
 
         {/* Get OTP Button */}
-        <div className="mt-15 flex justify-center">
-        <button
+        <div className="mt-6 flex justify-center">
+          <button
             onClick={handleGetOtp}
-            className={`relative text-white font-semibold py-3 px-8 rounded-lg shadow-md w-full mx-10 ${
-              mobileNumber.length === 10 ? "bg-[#FF0E0E]" : "bg-red-400"
+            className={`relative text-white font-semibold py-3 px-8 rounded-lg shadow-md w-full transition-all duration-300 ${
+              mobileNumber.length === 10 ? "bg-red-600 hover:bg-red-700" : "bg-red-400 cursor-not-allowed"
             }`}
           >
             GET OTP

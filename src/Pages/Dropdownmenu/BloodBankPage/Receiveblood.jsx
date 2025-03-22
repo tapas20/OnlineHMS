@@ -17,10 +17,10 @@ const Receiveblood = () => {
   };
 
   return (
-    <div className="flex justify-center items-center m-5 bg-gray-100">
-      <div className="w-96 bg-white p-6 rounded-2xl shadow-lg">
+    <div className="flex justify-center items-center min-h-screen p-4 bg-gray-100" style={{ backgroundColor: "#FA4848" }}>
+      <div className="w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg">
         {/* Header */}
-        <div className="bg-red-500 text-white p-4 rounded-t-2xl flex items-center">
+        <div className="bg-red-500 text-white p-4 rounded-t-2xl flex items-center justify-center">
           <h2 className="text-lg font-semibold">Needed Blood</h2>
         </div>
 
@@ -32,7 +32,7 @@ const Receiveblood = () => {
               <button
                 key={type}
                 onClick={() => setBloodType(type)}
-                className={`border rounded-lg px-4 py-2 text-center ${bloodType === type ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}
+                className={`border rounded-lg px-4 py-2 text-center transition-all duration-300 ${bloodType === type ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}
               >
                 {type}
               </button>
@@ -44,8 +44,15 @@ const Receiveblood = () => {
         <div className="mt-4">
           <p className="font-semibold">Patient Gender</p>
           <div className="flex gap-4 mt-2">
-            <button onClick={() => setGender('Male')} className={`border rounded-lg px-4 py-2 w-full ${gender === 'Male' ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}>Male</button>
-            <button onClick={() => setGender('Female')} className={`border rounded-lg px-4 py-2 w-full ${gender === 'Female' ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}>Female</button>
+            {['Male', 'Female'].map((gen) => (
+              <button 
+                key={gen} 
+                onClick={() => setGender(gen)} 
+                className={`border rounded-lg px-4 py-2 w-full transition-all duration-300 ${gender === gen ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}
+              >
+                {gen}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -57,7 +64,7 @@ const Receiveblood = () => {
               <button
                 key={rel}
                 onClick={() => setRelation(rel)}
-                className={`border rounded-lg px-4 py-2 flex-1 ${relation === rel ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}
+                className={`border rounded-lg px-4 py-2 flex-1 transition-all duration-300 ${relation === rel ? 'bg-red-500 text-white' : 'hover:bg-red-500 hover:text-white'}`}
               >
                 {rel}
               </button>
@@ -80,12 +87,12 @@ const Receiveblood = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="mt-6 mx-15">
+        <div className="mt-6">
           <button 
             onClick={handleSubmit} 
-            className="w-full bg-red-500 text-white py-3 rounded-lg text-lg shadow-md hover:bg-red-600"
+            className="w-full bg-red-500 text-white py-3 rounded-lg text-lg shadow-md hover:bg-red-600 transition-all duration-300"
           >
-            Send Requests
+            Send Request
           </button>
         </div>
 
