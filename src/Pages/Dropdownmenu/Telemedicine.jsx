@@ -14,7 +14,7 @@ const Telemedicine = () => {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
-
+  
   const filteredDoctors = selectedDepartment === "All"
     ? doctorsList
     : doctorsList.filter((doctor) => doctor.specialization === selectedDepartment);
