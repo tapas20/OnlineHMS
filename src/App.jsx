@@ -40,6 +40,7 @@ import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTr
 import OnlineMedicineDelivery from "./Pages/Dropdownmenu/OnlineMedicineDelivery";
 import PracticeManagementPortalForDoctors from "./Pages/Dropdownmenu/PracticeManagementPortalForDoctors";
 import Telemedicine from "./Pages/Dropdownmenu/Telemedicine";
+import DeliverySuccess from "./Pages/Landing/DeliverySuccess";
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
 
         <Route path="/electronicprescriptionsystem" element={<ElectronicPrescriptionSystem />} />
         <Route path="/onlinehomeservicetreatment" element={<OnlineHomeServiceTreatment />} />
+        <Route path="/delivery-success" element={<DeliverySuccess />} />
         <Route path="/onlinemedicinedelivery" element={<OnlineMedicineDelivery />} />
         <Route path="/practicemanagementportalfordoctors" element={<PracticeManagementPortalForDoctors />} />
         <Route path="/telemedicine" element={<Telemedicine />} />
