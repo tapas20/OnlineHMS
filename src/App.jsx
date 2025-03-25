@@ -15,6 +15,9 @@ import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
 
 
 import AI from "./Pages/Dropdownmenu/AI";
+
+
+
 //Blood bank router
 import BloodBankStore from "./Pages/Dropdownmenu/BloodBankPage/BloodBankStore";
 import Number from "./Pages/Dropdownmenu/BloodBankPage/Number";
@@ -24,6 +27,7 @@ import Checkup from "./Pages/Dropdownmenu/BloodBankPage/Checkup";
 import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood"
 import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage"
 import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage"
+import TrackingBlood from "./Pages/Dropdownmenu/BloodBankPage/TrackingBlood";
 
 
 //EHR page
@@ -63,6 +67,8 @@ function App() {
           <Route path="/receiveblood" element={<Receiveblood />} />
           <Route path="/requestpage" element={<Requestpage />} />
           <Route path="/historypage" element={<Historypage />} />
+          <Route path="/trackingblood" element={<TrackingBlood />} />
+
 
 
         <Route path="/electronichealthrecord" element={<ElectronicHealthRecord />} />
