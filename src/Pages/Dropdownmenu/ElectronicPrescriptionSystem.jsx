@@ -14,7 +14,7 @@ const PrescriptionForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded shadow-md">
+    <form onSubmit={handleSubmit} className="m-10 max-w-md mx-auto p-4 bg-white rounded shadow-md">
       <h2 className="text-lg font-bold mb-4">Create Prescription</h2>
       <div className="mb-4">
         <label className="block text-sm font-medium text-gray-700">Patient Name</label>
