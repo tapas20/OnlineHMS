@@ -1,21 +1,15 @@
 import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useDropzone } from "react-dropzone";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Web3 from "web3";
-// import { Buffer } from "buffer";  // Commented out IPFS-related imports
-// import axios from "axios";
-
-// Polyfill for Buffer - Commented out
-// window.Buffer = Buffer;
+import { sha256 } from "js-sha256";
 
 function SignupPatient() {
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
   const [account, setAccount] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [ipfsHash, setIpfsHash] = useState("");  // Commented out IPFS state
   const [patientAddress, setPatientAddress] = useState("");
   const [patientData, setPatientData] = useState(null);
 
@@ -24,13 +18,10 @@ function SignupPatient() {
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm();
 
-  // Commented out dropzone since we're not using IPFS
-  // const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
-  //   accept: { "image/*": [".jpeg", ".png", ".jpg"] },
-  //   maxFiles: 1,
-  // });
+  const password = watch("password", "");
 
   // Initialize Web3 and contract
   useEffect(() => {
@@ -43,6 +34,19 @@ function SignupPatient() {
           setAccount(accounts[0]);
 
           const contractABI = [
+            {
+              anonymous: false,
+              inputs: [
+                {
+                  indexed: true,
+                  internalType: "address",
+                  name: "patientAddress",
+                  type: "address",
+                },
+              ],
+              name: "PasswordUpdated",
+              type: "event",
+            },
             {
               anonymous: false,
               inputs: [
@@ -105,13 +109,45 @@ function SignupPatient() {
                 },
                 {
                   internalType: "string",
-                  name: "_ipfsHash",
+                  name: "_passwordHash",
                   type: "string",
                 },
               ],
               name: "registerPatient",
               outputs: [],
               stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "string",
+                  name: "_newPasswordHash",
+                  type: "string",
+                },
+              ],
+              name: "updatePassword",
+              outputs: [],
+              stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "string",
+                  name: "",
+                  type: "string",
+                },
+              ],
+              name: "emailToAddress",
+              outputs: [
+                {
+                  internalType: "address",
+                  name: "",
+                  type: "address",
+                },
+              ],
+              stateMutability: "view",
               type: "function",
             },
             {
@@ -169,10 +205,24 @@ function SignupPatient() {
                   name: "",
                   type: "string",
                 },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
                 {
                   internalType: "string",
-                  name: "",
+                  name: "_email",
                   type: "string",
+                },
+              ],
+              name: "getPatientByEmail",
+              outputs: [
+                {
+                  internalType: "address",
+                  name: "",
+                  type: "address",
                 },
               ],
               stateMutability: "view",
@@ -186,6 +236,25 @@ function SignupPatient() {
                   internalType: "uint256",
                   name: "",
                   type: "uint256",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "address",
+                  name: "_patientAddress",
+                  type: "address",
+                },
+              ],
+              name: "isRegistered",
+              outputs: [
+                {
+                  internalType: "bool",
+                  name: "",
+                  type: "bool",
                 },
               ],
               stateMutability: "view",
@@ -267,8 +336,32 @@ function SignupPatient() {
                 },
                 {
                   internalType: "string",
-                  name: "ipfsHash",
+                  name: "passwordHash",
                   type: "string",
+                },
+              ],
+              stateMutability: "view",
+              type: "function",
+            },
+            {
+              inputs: [
+                {
+                  internalType: "string",
+                  name: "_email",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "_passwordHash",
+                  type: "string",
+                },
+              ],
+              name: "verifyPassword",
+              outputs: [
+                {
+                  internalType: "bool",
+                  name: "",
+                  type: "bool",
                 },
               ],
               stateMutability: "view",
@@ -276,7 +369,7 @@ function SignupPatient() {
             },
           ];
 
-          const contractAddress = "0x08fD6F544b18F08f31df9c4321bd0995cc0E6b2d";
+          const contractAddress = "0x35Be442c5A4D96D4A118E0Cac5F0D68abFf76Ac1";
           const contractInstance = new web3Instance.eth.Contract(
             contractABI,
             contractAddress
@@ -285,7 +378,6 @@ function SignupPatient() {
           setWeb3(web3Instance);
         } catch (error) {
           console.error("Error initializing Web3:", error);
-          alert("Failed to connect to MetaMask. Please try again.");
         }
       } else {
         alert("Please install MetaMask to use this app!");
@@ -295,28 +387,9 @@ function SignupPatient() {
     initWeb3();
   }, []);
 
-  // Commented out IPFS upload function
-  // const uploadToIPFS = async (file) => {
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append("file", file);
-  //     const response = await axios.post(
-  //       "https://api.pinata.cloud/pinning/pinFileToIPFS",
-  //       formData,
-  //       {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //           pinata_api_key: "YOUR_PINATA_API_KEY",
-  //           pinata_secret_api_key: "YOUR_PINATA_SECRET_KEY",
-  //         },
-  //       }
-  //     );
-  //     return response.data.IpfsHash;
-  //   } catch (error) {
-  //     console.error("Error uploading to IPFS:", error);
-  //     return "";
-  //   }
-  // };
+  const hashPassword = (password) => {
+    return sha256(password);
+  };
 
   const onSubmit = async (data) => {
     if (!contract || !account) {
@@ -324,20 +397,21 @@ function SignupPatient() {
       return;
     }
 
+    if (data.password !== data.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
     try {
       setLoading(true);
 
-      // Commented out IPFS upload
-      // let ipfsHash = "";
-      // if (acceptedFiles[0]) {
-      //   ipfsHash = await uploadToIPFS(acceptedFiles[0]);
-      //   setIpfsHash(ipfsHash);
-      // }
+      // Hash the password before sending to blockchain
+      const passwordHash = hashPassword(data.password);
 
       // Convert date to timestamp
       const dobTimestamp = Math.floor(new Date(data.dob).getTime() / 1000);
 
-      // Register patient on blockchain without IPFS hash
+      // Register patient on blockchain
       await contract.methods
         .registerPatient(
           data.fullName,
@@ -349,7 +423,7 @@ function SignupPatient() {
           data.medicalHistory || "",
           data.bloodGroup || "",
           data.allergies || "",
-          "" // Empty string for ipfsHash parameter
+          passwordHash
         )
         .send({ from: account });
 
@@ -372,7 +446,7 @@ function SignupPatient() {
       const data = await contract.methods.getPatient(patientAddress).call();
       setPatientData({
         fullName: data[0],
-        dob: new Date(Number(data[1]) * 1000).toLocaleDateString(), // Convert BigInt to Number
+        dob: new Date(Number(data[1]) * 1000).toLocaleDateString(),
         gender: data[2],
         contactNo: data[3],
         email: data[4],
@@ -397,39 +471,6 @@ function SignupPatient() {
           {account ? `Connected: ${account}` : "Not connected to MetaMask"}
         </p>
       </div>
-
-      {/* Commented out Profile Photo Upload section */}
-      {/* <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-blue-500 transition-colors">
-        <div {...getRootProps({ className: "cursor-pointer" })}>
-          <input {...getInputProps()} />
-          {acceptedFiles[0] ? (
-            <img
-              src={URL.createObjectURL(acceptedFiles[0])}
-              alt="Profile Preview"
-              className="mx-auto h-32 w-32 rounded-full object-cover"
-            />
-          ) : (
-            <div className="space-y-2">
-              <svg
-                className="mx-auto h-12 w-12 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <p className="text-sm text-gray-600">
-                Drag & drop profile photo, or click to select (Optional)
-              </p>
-            </div>
-          )}
-        </div>
-      </div> */}
 
       {/* Form Fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -495,6 +536,28 @@ function SignupPatient() {
           register={register}
           required
           error={errors.email}
+        />
+
+        {/* Password Field */}
+        <InputField
+          label="Password"
+          name="password"
+          type="password"
+          register={register}
+          required
+          minLength={8}
+          error={errors.password}
+        />
+
+        {/* Confirm Password Field */}
+        <InputField
+          label="Confirm Password"
+          name="confirmPassword"
+          type="password"
+          register={register}
+          required
+          validate={(value) => value === password || "Passwords do not match"}
+          error={errors.confirmPassword}
         />
 
         {/* Emergency Contact */}
@@ -604,22 +667,20 @@ function SignupPatient() {
           </div>
         )}
       </div>
-
-      {/* Commented out IPFS Hash display */}
-      {/* {ipfsHash && (
-        <div className="p-4 bg-gray-100 rounded-lg">
-          <p className="text-sm">
-            <span className="font-medium">Profile Photo IPFS Hash:</span>{" "}
-            {ipfsHash}
-          </p>
-        </div>
-      )} */}
     </form>
   );
 }
 
 // Reusable Input Component
-function InputField({ label, name, type = "text", register, required, error }) {
+function InputField({
+  label,
+  name,
+  type = "text",
+  register,
+  required,
+  error,
+  minLength,
+}) {
   return (
     <div className="space-y-1">
       <label className="block text-sm font-medium text-gray-700">
@@ -627,11 +688,21 @@ function InputField({ label, name, type = "text", register, required, error }) {
       </label>
       <input
         type={type}
-        {...register(name, { required })}
+        {...register(name, {
+          required,
+          minLength: minLength
+            ? {
+                value: minLength,
+                message: `Must be at least ${minLength} characters`,
+              }
+            : undefined,
+        })}
         className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
       />
       {error && (
-        <span className="text-red-500 text-sm">This field is required</span>
+        <span className="text-red-500 text-sm">
+          {error.message || "This field is required"}
+        </span>
       )}
     </div>
   );
