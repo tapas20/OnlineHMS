@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
-import Web3 from "web3";
 import { sha256 } from "js-sha256";
+import { useWeb3 } from "../../../context/Web3Context";
 
 function LoginPatient() {
   const [formData, setFormData] = useState({
@@ -11,372 +11,9 @@ function LoginPatient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [web3, setWeb3] = useState(null);
-  const [contract, setContract] = useState(null);
-  const [account, setAccount] = useState("");
 
   const navigate = useNavigate();
-
-  // Initialize Web3 and contract
-  const initWeb3 = async () => {
-    if (window.ethereum) {
-      try {
-        const web3Instance = new Web3(window.ethereum);
-        await window.ethereum.request({ method: "eth_requestAccounts" });
-        const accounts = await web3Instance.eth.getAccounts();
-        setAccount(accounts[0]);
-
-        const contractABI = [
-          {
-            anonymous: false,
-            inputs: [
-              {
-                indexed: true,
-                internalType: "address",
-                name: "patientAddress",
-                type: "address",
-              },
-            ],
-            name: "PasswordUpdated",
-            type: "event",
-          },
-          {
-            anonymous: false,
-            inputs: [
-              {
-                indexed: true,
-                internalType: "address",
-                name: "patientAddress",
-                type: "address",
-              },
-            ],
-            name: "PatientRegistered",
-            type: "event",
-          },
-          {
-            inputs: [
-              {
-                internalType: "string",
-                name: "_fullName",
-                type: "string",
-              },
-              {
-                internalType: "uint256",
-                name: "_dob",
-                type: "uint256",
-              },
-              {
-                internalType: "string",
-                name: "_gender",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_contactNo",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_email",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_emergencyContact",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_medicalHistory",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_bloodGroup",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_allergies",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_passwordHash",
-                type: "string",
-              },
-            ],
-            name: "registerPatient",
-            outputs: [],
-            stateMutability: "nonpayable",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "string",
-                name: "_newPasswordHash",
-                type: "string",
-              },
-            ],
-            name: "updatePassword",
-            outputs: [],
-            stateMutability: "nonpayable",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-            ],
-            name: "emailToAddress",
-            outputs: [
-              {
-                internalType: "address",
-                name: "",
-                type: "address",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "address",
-                name: "_patientAddress",
-                type: "address",
-              },
-            ],
-            name: "getPatient",
-            outputs: [
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "",
-                type: "string",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "string",
-                name: "_email",
-                type: "string",
-              },
-            ],
-            name: "getPatientByEmail",
-            outputs: [
-              {
-                internalType: "address",
-                name: "",
-                type: "address",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [],
-            name: "getPatientCount",
-            outputs: [
-              {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "address",
-                name: "_patientAddress",
-                type: "address",
-              },
-            ],
-            name: "isRegistered",
-            outputs: [
-              {
-                internalType: "bool",
-                name: "",
-                type: "bool",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "uint256",
-                name: "",
-                type: "uint256",
-              },
-            ],
-            name: "patientAddresses",
-            outputs: [
-              {
-                internalType: "address",
-                name: "",
-                type: "address",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "address",
-                name: "",
-                type: "address",
-              },
-            ],
-            name: "patients",
-            outputs: [
-              {
-                internalType: "string",
-                name: "fullName",
-                type: "string",
-              },
-              {
-                internalType: "uint256",
-                name: "dob",
-                type: "uint256",
-              },
-              {
-                internalType: "string",
-                name: "gender",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "contactNo",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "email",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "emergencyContact",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "medicalHistory",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "bloodGroup",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "allergies",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "passwordHash",
-                type: "string",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-          {
-            inputs: [
-              {
-                internalType: "string",
-                name: "_email",
-                type: "string",
-              },
-              {
-                internalType: "string",
-                name: "_passwordHash",
-                type: "string",
-              },
-            ],
-            name: "verifyPassword",
-            outputs: [
-              {
-                internalType: "bool",
-                name: "",
-                type: "bool",
-              },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-        ];
-
-        const contractAddress = "0x35Be442c5A4D96D4A118E0Cac5F0D68abFf76Ac1";
-        const contractInstance = new web3Instance.eth.Contract(
-          contractABI,
-          contractAddress
-        );
-        setContract(contractInstance);
-        setWeb3(web3Instance);
-      } catch (error) {
-        console.error("Error initializing Web3:", error);
-        setError("Failed to connect to blockchain. Please try again.");
-      }
-    } else {
-      setError("Please install MetaMask to use this app!");
-    }
-  };
+  const { web3, contract, login, initWeb3 } = useWeb3();
 
   const hashPassword = (password) => {
     return sha256(password);
@@ -391,6 +28,9 @@ function LoginPatient() {
     try {
       if (!web3 || !contract) {
         await initWeb3();
+        if (!web3 || !contract) {
+          throw new Error("Failed to connect to blockchain");
+        }
       }
 
       // Password-based login
@@ -410,15 +50,12 @@ function LoginPatient() {
         throw new Error("Invalid credentials");
       }
 
+      // Call login function from context
+      login();
       setSuccess("Login successful! Redirecting...");
-      console.log("Patient Login with Password:", {
-        userId: formData.userId,
-        password: formData.password,
-      });
 
-      // Wait a moment to show the success message before redirecting
       setTimeout(() => {
-        navigate("/");
+        navigate("/patientdash");
       }, 1500);
     } catch (err) {
       console.error("Login failed:", err);
@@ -434,13 +71,6 @@ function LoginPatient() {
         <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Patient Login
         </h1>
-
-        {/* Connection Status */}
-        {account && (
-          <div className="mb-4 p-2 bg-green-50 text-green-700 text-sm rounded">
-            Connected: {account.substring(0, 6)}...{account.substring(38)}
-          </div>
-        )}
 
         {/* Error Message */}
         {error && (

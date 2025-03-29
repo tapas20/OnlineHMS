@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useWeb3 } from "../../context/Web3Context";
 
 const Header = () => {
+  const { account, logout, isAuthenticated } = useWeb3();
   const [modalType, setModalType] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -16,6 +18,7 @@ const Header = () => {
       setIsDropdownOpen(false);
     }
   };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -40,6 +43,51 @@ const Header = () => {
   };
 
   const closeModal = () => setModalType(null);
+
+  const AuthButtons = ({ isMobile = false }) => (
+    <div className={`flex ${isMobile ? "flex-col w-full" : "space-x-4"}`}>
+      {!isAuthenticated ? (
+        <>
+          <button
+            onClick={() => {
+              toggleModal("signup");
+              if (isMobile) closeMenu();
+            }}
+            className={`bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all ${
+              isMobile ? "w-full mt-2" : ""
+            }`}
+          >
+            SignUp
+          </button>
+          <button
+            onClick={() => {
+              toggleModal("login");
+              if (isMobile) closeMenu();
+            }}
+            className={`bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all ${
+              isMobile ? "w-full mt-2" : ""
+            }`}
+          >
+            Login
+          </button>
+        </>
+      ) : (
+        <>
+          <span className="px-4 py-2 text-gray-700">
+            {`${account.substring(0, 6)}...${account.substring(38)}`}
+          </span>
+          <button
+            onClick={logout}
+            className={`bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-all ${
+              isMobile ? "w-full mt-2" : ""
+            }`}
+          >
+            Logout
+          </button>
+        </>
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -170,7 +218,6 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/bookappointment"
-                      
                       onClick={() => {
                         toggleDropdownMenu();
                         closeMenu();
@@ -191,18 +238,24 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink to="/bloodbankstore"  onClick={() => {
-    toggleDropdownMenu();
-    closeMenu();
-  }}>
+                    <NavLink
+                      to="/bloodbankstore"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
                       3-Blood Bank Store and Blood Donate tracking system
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink to="/ai"   onClick={() => {
-    toggleDropdownMenu();
-    closeMenu();
-  }}>
+                    <NavLink
+                      to="/ai"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
                       4-AI generated prescription according to the symptoms
                     </NavLink>
                   </li>
@@ -229,10 +282,13 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink to="/telemedicine"   onClick={() => {
-    toggleDropdownMenu();
-    closeMenu();
-  }}>
+                    <NavLink
+                      to="/telemedicine"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
                       7-Telemedicine
                     </NavLink>
                   </li>
@@ -250,10 +306,10 @@ const Header = () => {
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/electronicprescriptionsystem"
-                    onClick={()=>{
-                      toggleDropdownMenu();
-                      closeMenu();
-                    }}
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
                     >
                       9-Electronic Prescription System
                     </NavLink>
@@ -265,43 +321,13 @@ const Header = () => {
 
           {/* Login/Signup Buttons for Mobile */}
           <li className="block md:hidden">
-            <button
-              onClick={() => {
-                toggleModal("signup");
-                closeMenu();
-              }}
-              className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all mt-2"
-            >
-              SignUp
-            </button>
-          </li>
-          <li className="block md:hidden">
-            <button
-              onClick={() => {
-                toggleModal("login");
-                closeMenu();
-              }}
-              className="w-full bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all mt-2"
-            >
-              Login
-            </button>
+            <AuthButtons isMobile />
           </li>
         </ul>
 
         {/* Login/Signup Buttons for Desktop */}
-        <div className="hidden md:flex space-x-4">
-          <button
-            onClick={() => toggleModal("signup")}
-            className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all"
-          >
-            SignUp
-          </button>
-          <button
-            onClick={() => toggleModal("login")}
-            className="cursor-pointer bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all"
-          >
-            Login
-          </button>
+        <div className="hidden md:flex">
+          <AuthButtons />
         </div>
       </nav>
     </>
