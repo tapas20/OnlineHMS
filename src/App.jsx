@@ -6,13 +6,10 @@ import BlockchainAuthMiddleware from "./Middleware/BlockchainAuthMiddleware";
 import Landing from "./Pages/Landing/Landing";
 import About from "./Pages/About/About";
 import Contact from "./pages/Contact/Contact";
-import LoginDoctor from "./Pages/Authentcation/Doctor_Login/LoginDoctor";
 import LoginPatient from "./Pages/Authentcation/Patient_Login/LoginPatient";
-import SignupDoctor from "./Pages/Authentcation/Doctor_Signup/SignupDoctor";
 import SignupPatient from "./Pages/Authentcation/Patient_Signup/SignupPatient";
 import Patient from "./Pages/Patient/Patient";
 import BookAppointment from "./Pages/Dropdownmenu/BookAppointment";
-import DoctorDashboard from "./Pages/DashboardPages/DoctorDashboard";
 import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
 
 import AI from "./Pages/Dropdownmenu/AI";
@@ -50,9 +47,7 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="logindoctor" element={<LoginDoctor />} />
             <Route path="loginpatient" element={<LoginPatient />} />
-            <Route path="signupdoctor" element={<SignupDoctor />} />
             <Route path="signuppatient" element={<SignupPatient />} />
             <Route path="delivery-success" element={<DeliverySuccess />} />
           </Route>
@@ -111,7 +106,6 @@ function App() {
               </BlockchainAuthMiddleware>
             }
           >
-            <Route path="doctordash" element={<DoctorDashboard />} />
             <Route
               path="practicemanagementportalfordoctors"
               element={<PracticeManagementPortalForDoctors />}

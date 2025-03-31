@@ -18,7 +18,6 @@ export const Web3Provider = ({ children }) => {
         const accounts = await web3Instance.eth.getAccounts();
         setAccount(accounts[0]);
 
-        // Initialize your contract
         const contractABI = [
           {
             anonymous: false,
