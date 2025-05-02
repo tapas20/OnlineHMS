@@ -167,7 +167,7 @@ const Header = () => {
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
-                      to="/bloodbankstore"
+                      to="/bloodhomescreen"
                       onClick={() => {
                         toggleDropdownMenu();
                         closeMenu();

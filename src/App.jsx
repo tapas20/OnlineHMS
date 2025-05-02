@@ -15,15 +15,9 @@ import PatientDashboard from "./Pages/DashboardPages/PatientDashboard";
 import AI from "./Pages/Dropdownmenu/AI";
 
 //Blood bank router
-import BloodBankStore from "./Pages/Dropdownmenu/BloodBankPage/BloodBankStore";
-import Number from "./Pages/Dropdownmenu/BloodBankPage/Number";
-import Otp from "./Pages/Dropdownmenu/BloodBankPage/Otp";
-import Bloodcheckup from "./Pages/Dropdownmenu/BloodBankPage/Bloodcheckup";
-import Checkup from "./Pages/Dropdownmenu/BloodBankPage/Checkup";
-import Receiveblood from "./Pages/Dropdownmenu/BloodBankPage/Receiveblood";
-import Requestpage from "./Pages/Dropdownmenu/BloodBankPage/Requestpage";
-import Historypage from "./Pages/Dropdownmenu/BloodBankPage/Historypage";
-import TrackingBlood from "./Pages/Dropdownmenu/BloodBankPage/TrackingBlood";
+import BloodHomeScreen from "./Pages/Dropdownmenu/BloodBankPage/BloodHomeScreen"
+import ForecastDashboard from "./Pages/Dropdownmenu/BloodBankPage/ForecastDashboard";
+import BlockchainLogViewer from "./Pages/Dropdownmenu/BloodBankPage/BlockchainLogViewer";
 
 //EHR page
 import ElectronicHealthRecord from "./Pages/Dropdownmenu/HealthRecordPage/ElectronicHealthRecord";
@@ -66,15 +60,10 @@ function App() {
 
             {/* Protected Services */}
             <Route path="bookappointment" element={<BookAppointment />} />
-            <Route path="bloodbankstore" element={<BloodBankStore />} />
-            <Route path="number" element={<Number />} />
-            <Route path="otp" element={<Otp />} />
-            <Route path="bloodcheckup" element={<Bloodcheckup />} />
-            <Route path="checkup" element={<Checkup />} />
-            <Route path="receiveblood" element={<Receiveblood />} />
-            <Route path="requestpage" element={<Requestpage />} />
-            <Route path="historypage" element={<Historypage />} />
-            <Route path="trackingblood" element={<TrackingBlood />} />
+            <Route path="/bloodhomescreen" element={<BloodHomeScreen />} />
+         
+          <Route path="/forecastdashboard" element={<ForecastDashboard />} />
+          <Route path="/blockchain" element={<BlockchainLogViewer />} />
             <Route
               path="electronichealthrecord"
               element={<ElectronicHealthRecord />}
