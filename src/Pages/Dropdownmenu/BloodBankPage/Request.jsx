@@ -1,0 +1,93 @@
+import { useState } from "react";
+import { FaMapMarkerAlt, FaFilter, FaMap, FaMapPin } from "react-icons/fa";
+
+const BloodRequestMap = () => {
+    const [activeRequest, setActiveRequest] = useState(null);
+    const [showFilters, setShowFilters] = useState(false);
+    
+    const requests = [
+      { id: 1, bloodType: 'O+', hospital: 'City General', urgency: 'urgent', distance: '0.7mi', timeLeft: '2h 15m' },
+      { id: 2, bloodType: 'A-', hospital: 'Childrens Hospital', urgency: 'critical', distance: '1.2mi', timeLeft: '1h 30m' },
+      { id: 3, bloodType: 'B+', hospital: 'Regional Medical', urgency: 'moderate', distance: '2.5mi', timeLeft: '5h 45m' }
+    ];
+  
+    return (
+      <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="p-4 border-b flex justify-between items-center">
+          <h3 className="text-xl font-bold text-red-600 flex items-center">
+            <FaMapMarkerAlt className="mr-2" /> Nearby Requests
+          </h3>
+          <button 
+            onClick={() => setShowFilters(!showFilters)}
+            className="text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-full flex items-center"
+          >
+            <FaFilter className="mr-1" /> Filter
+          </button>
+        </div>
+        
+        {showFilters && (
+          <div className="p-4 border-b bg-gray-50 flex flex-wrap gap-2">
+            <button className="px-3 py-1 bg-red-600 text-white rounded-full text-sm">O+</button>
+            <button className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">A+</button>
+            <button className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">B+</button>
+            <button className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">AB+</button>
+            <button className="px-3 py-1 bg-white border border-gray-300 rounded-full text-sm">O-</button>
+          </div>
+        )}
+        
+        <div className="h-64 bg-gray-200 relative">
+          {/* This would be a real map component in production */}
+          <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+            <div className="text-center">
+              <FaMap className="text-4xl mx-auto mb-2" />
+              <p>Interactive Map Display</p>
+            </div>
+          </div>
+          
+          {/* Map markers */}
+          {requests.map(req => (
+            <div 
+              key={req.id}
+              onClick={() => setActiveRequest(req.id)}
+              className={`absolute cursor-pointer ${req.urgency === 'critical' ? 'text-red-600' : req.urgency === 'urgent' ? 'text-orange-500' : 'text-yellow-500'}`}
+              style={{
+                left: `${20 + (req.id * 25)}%`,
+                top: `${30 + (req.id * 10)}%`
+              }}
+            >
+              <FaMapPin className="text-3xl" />
+            </div>
+          ))}
+        </div>
+        
+        <div className="p-4">
+          <h4 className="font-medium mb-2">Available Requests</h4>
+          <div className="space-y-3">
+            {requests.map(req => (
+              <div 
+                key={req.id}
+                onClick={() => setActiveRequest(req.id)}
+                className={`p-3 border rounded-lg cursor-pointer transition-all ${activeRequest === req.id ? 'border-red-500 bg-red-50' : 'border-gray-200 hover:border-red-300'}`}
+              >
+                <div className="flex justify-between items-start">
+                  <div>
+                    <span className="font-bold text-red-600">{req.bloodType}</span>
+                    <span className="text-gray-600 ml-2">at {req.hospital}</span>
+                  </div>
+                  <span className={`text-xs px-2 py-1 rounded-full ${req.urgency === 'critical' ? 'bg-red-100 text-red-800' : req.urgency === 'urgent' ? 'bg-orange-100 text-orange-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                    {req.urgency}
+                  </span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-500 mt-1">
+                  <span>{req.distance} away</span>
+                  <span>Expires in {req.timeLeft}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  export default BloodRequestMap;
