@@ -242,6 +242,51 @@ const Header = () => {
                       9-Electronic Prescription System
                     </NavLink>
                   </li>
+
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <NavLink
+                      to="/walkthrough"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
+                      10-Ambulance Service
+                    </NavLink>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <NavLink
+                      to="/caretakerhomepage"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
+                      11-Caretaker Service
+                    </NavLink>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <NavLink
+                      to="/diagnosishomepage"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
+                      12-Diagnosis Service
+                    </NavLink>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <NavLink
+                      to="/nursingservicehome"
+                      onClick={() => {
+                        toggleDropdownMenu();
+                        closeMenu();
+                      }}
+                    >
+                      13-Nursing Service
+                    </NavLink>
+                  </li>
                 </ul>
               </div>
             )}
