@@ -8,27 +8,39 @@ const DonationHistory = () => {
   const donations = [
     {
       id: 1,
-      date: "2023-05-15",
+      transactionId: "TXN1001",
+      date: "2023-05-15T10:30:00",
       location: "City Blood Center",
+      hospital: "City Hospital",
       points: 50,
       bloodType: "A+",
+      age: 28,
       status: "completed",
+      serviceType: "donate",
     },
     {
       id: 2,
-      date: "2023-03-22",
+      transactionId: "TXN1002",
+      date: "2023-03-22T14:15:00",
       location: "Mobile Blood Drive",
+      hospital: "Health Care Van",
       points: 50,
       bloodType: "A+",
+      age: 30,
       status: "completed",
+      serviceType: "donate",
     },
     {
       id: 3,
-      date: "2023-01-10",
+      transactionId: "TXN1003",
+      date: "2023-01-10T09:00:00",
       location: "Central Hospital",
+      hospital: "Central Hospital",
       points: 50,
       bloodType: "A+",
+      age: 35,
       status: "completed",
+      serviceType: "request",
     },
   ];
 
@@ -68,7 +80,7 @@ const DonationHistory = () => {
           <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200"></div>
 
           <div className="space-y-6">
-            {donations.map((donation, index) => (
+            {donations.map((donation) => (
               <div key={donation.id} className="relative pl-10">
                 {/* Timeline dot */}
                 <div className="absolute left-0 w-4 h-4 rounded-full bg-red-600 border-4 border-white shadow-md"></div>
@@ -98,9 +110,7 @@ const DonationHistory = () => {
                       </span>
                       <FaChevronDown
                         className={`text-gray-400 transition-transform ${
-                          expandedCard === donation.id
-                            ? "transform rotate-180"
-                            : ""
+                          expandedCard === donation.id ? "rotate-180" : ""
                         }`}
                       />
                     </div>
@@ -110,13 +120,42 @@ const DonationHistory = () => {
                     <div className="mt-3 pt-3 border-t border-gray-100 animate-fade-in">
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <p className="text-gray-500">Blood Type</p>
+                          <p className="text-gray-500">Transaction ID</p>
+                          <p className="font-medium">
+                            {donation.transactionId}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Hospital</p>
+                          <p className="font-medium">{donation.hospital}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Blood Group</p>
                           <p className="font-medium">{donation.bloodType}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Age</p>
+                          <p className="font-medium">{donation.age}</p>
                         </div>
                         <div>
                           <p className="text-gray-500">Status</p>
                           <p className="font-medium capitalize">
                             {donation.status}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Service Type</p>
+                          <p className="font-medium capitalize">
+                            {donation.serviceType}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Date & Time</p>
+                          <p className="font-medium">
+                            {new Date(donation.date).toLocaleString("en-US", {
+                              dateStyle: "medium",
+                              timeStyle: "short",
+                            })}
                           </p>
                         </div>
                       </div>

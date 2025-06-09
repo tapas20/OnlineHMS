@@ -25,6 +25,56 @@ const DonationScheduler = () => {
       </h3>
 
       <div className="mb-4">
+        <label className="block text-gray-700 mb-2">Name of the Donor</label>
+        <input
+          type="text"
+          placeholder="Enter donor's name"
+          onChange={(e) => setDonorName(e.target.value)}
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700 mb-2">Blood Group Type</label>
+        <select
+          onChange={(e) => setBloodGroup(e.target.value)}
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+        >
+          <option value="">Select Blood Group</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700 mb-2">Age</label>
+        <input
+          type="number"
+          min="18"
+          max="65"
+          placeholder="Enter age"
+          onChange={(e) => setAge(e.target.value)}
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700 mb-2">Location</label>
+        <input
+          type="text"
+          placeholder="Enter location"
+          onChange={(e) => setLocation(e.target.value)}
+          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+        />
+      </div>
+
+      <div className="mb-4">
         <label className="block text-gray-700 mb-2">Select Date</label>
         <input
           type="date"
