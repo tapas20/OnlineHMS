@@ -28,7 +28,8 @@ import ElectronicPrescriptionSystem from "./Pages/Dropdownmenu/ElectronicPrescri
 import OnlineHomeServiceTreatment from "./Pages/Dropdownmenu/OnlineHomeServiceTreatment";
 import OnlineMedicineDelivery from "./Pages/Dropdownmenu/OnlineMedicineDelivery";
 import PracticeManagementPortalForDoctors from "./Pages/Dropdownmenu/PracticeManagementPortalForDoctors";
-import Telemedicine from "./Pages/Dropdownmenu/Telemedicine";
+import Telemedicine from "./Pages/Dropdownmenu/TeleMedicine/Telemedicine";
+import TeleConfirmationPage from "./Pages/Dropdownmenu/TeleMedicine/TeleConfirmationPage";
 import DeliverySuccess from "./Pages/Landing/DeliverySuccess";
 
 // Ambulance
@@ -126,6 +127,8 @@ function App() {
               element={<OnlineMedicineDelivery />}
             />
             <Route path="telemedicine" element={<Telemedicine />} />
+            <Route path="confirmation" element={<TeleConfirmationPage />} />
+
             <Route path="ai" element={<AI />} />
           </Route>
 
