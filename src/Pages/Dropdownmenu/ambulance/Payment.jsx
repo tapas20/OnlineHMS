@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const paymentOptions = ["Visa", "Google Pay", "Paytm", "Paypal"];
+const paymentOptions = ["UPI", "Credit Card", "Debit Card", "Cash on Delivery"];
 
 const PaymentPage = () => {
   const [phone, setPhone] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [customerName, setCustomerName] = useState("");
+  const [condition, setCondition] = useState("");
+  const [pickupDateTime, setPickupDateTime] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+
+
 
   const navigate = useNavigate();
 
@@ -23,7 +29,6 @@ const PaymentPage = () => {
   return (
     <div className="p-4">
       <h2 className="text-xl font-semibold mb-2">Payment</h2>
-
       {/* Display selected details */}
       <div className="mb-4">
         <div>
@@ -55,7 +60,6 @@ const PaymentPage = () => {
           </button>
         </div>
       </div>
-
       {/* Customer Details */}
       <div className="mb-4">
         <input
@@ -72,8 +76,40 @@ const PaymentPage = () => {
           onChange={(e) => setPhone(e.target.value)}
           className="border p-2 rounded w-full mb-2"
         />
+        <input
+          type="text"
+          placeholder="Patient Condition"
+          value={condition}
+          onChange={(e) => setCondition(e.target.value)}
+          className="border p-2 rounded w-full mb-2"
+        />
+        <input
+          type="datetime-local"
+          placeholder="Date and Time of Pickup"
+          value={pickupDateTime}
+          onChange={(e) => setPickupDateTime(e.target.value)}
+          className="border p-2 rounded w-full mb-2"
+        />
+        <input
+          type="number"
+          placeholder="Patient Age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+          className="border p-2 rounded w-full mb-2"
+        />
+        <select
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
+          className="border p-2 rounded w-full mb-2"
+        >
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
 
+      
       {/* Payment Type */}
       <h3 className="font-semibold mt-2">Select Payment Method</h3>
       {paymentOptions.map((option, idx) => (
@@ -87,14 +123,13 @@ const PaymentPage = () => {
           {option}
         </div>
       ))}
-
-      {/* Pay Now Button */}
+  
       <button
         className="mt-4 bg-teal-600 text-white px-4 py-2 rounded"
         onClick={handlePayment}
         disabled={!phone || !paymentMethod || !customerName}
       >
-        Pay Now
+        {paymentMethod === "Cash on Delivery" ? "Confirm Booking" : "Pay Now"}
       </button>
     </div>
   );
