@@ -41,7 +41,12 @@ const Telemedicine = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [patientName, setPatientName] = useState("");
+  const [patientAge, setPatientAge] = useState("");
+  const [patientGender, setPatientGender] = useState("");
 
   const navigate = useNavigate();
 
@@ -52,19 +57,29 @@ const Telemedicine = () => {
           (doctor) => doctor.specialization === selectedDepartment
         );
 
-  const bookAppointment = (doctor) => {
-    if (!appointmentDate || !appointmentTime || !patientName) {
-      alert("Please fill in all fields: date, time, and patient name.");
+  const openModal = (doctor) => {
+    if (!appointmentDate || !appointmentTime) {
+      alert("Please select date and time first.");
+      return;
+    }
+    setSelectedDoctor(doctor);
+    setModalOpen(true);
+  };
+
+  const confirmBooking = () => {
+    if (!patientName || !patientAge || !patientGender) {
+      alert("Please fill in all patient details.");
       return;
     }
 
-    // Navigate to confirmation page with state
     navigate("/confirmation", {
       state: {
-        doctorName: doctor.name,
+        doctorName: selectedDoctor.name,
         appointmentDate,
         appointmentTime,
         patientName,
+        patientAge,
+        patientGender,
       },
     });
   };
@@ -75,7 +90,7 @@ const Telemedicine = () => {
         Book a Telemedicine Appointment
       </h2>
 
-      {/* Department and Patient Name */}
+      {/* Department Selector */}
       <div className="mb-6 flex flex-col sm:flex-row gap-4 items-center">
         <div>
           <label className="text-[#005f8d] font-medium mr-2">
@@ -93,22 +108,9 @@ const Telemedicine = () => {
             ))}
           </select>
         </div>
-
-        <div>
-          <label className="text-[#005f8d] font-medium mr-2">
-            Patient Name:
-          </label>
-          <input
-            type="text"
-            className="bg-white border border-gray-300 p-2 rounded-lg shadow-sm text-[#005f8d]"
-            placeholder="Enter patient name"
-            value={patientName}
-            onChange={(e) => setPatientName(e.target.value)}
-          />
-        </div>
       </div>
 
-      {/* Doctors List */}
+      {/* Doctor Cards */}
       {filteredDoctors.length > 0 ? (
         <div className="w-full flex justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
@@ -155,7 +157,7 @@ const Telemedicine = () => {
                 </div>
 
                 <button
-                  onClick={() => bookAppointment(doctor)}
+                  onClick={() => openModal(doctor)}
                   className="mt-4 px-4 py-2 bg-[#0077b6] hover:bg-[#005f8d] text-white font-semibold rounded-lg transition duration-300 shadow-md w-full"
                 >
                   Book Now
@@ -168,6 +170,55 @@ const Telemedicine = () => {
         <p className="text-red-500 font-medium text-center w-full">
           No doctors available in this department.
         </p>
+      )}
+
+      {/* Booking Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
+            <h3 className="text-lg font-bold text-[#005f8d] mb-4 text-center">
+              Enter Patient Details
+            </h3>
+            <input
+              type="text"
+              placeholder="Patient Name"
+              value={patientName}
+              onChange={(e) => setPatientName(e.target.value)}
+              className="w-full mb-3 p-2 border border-gray-300 rounded"
+            />
+            <input
+              type="number"
+              placeholder="Age"
+              value={patientAge}
+              onChange={(e) => setPatientAge(e.target.value)}
+              className="w-full mb-3 p-2 border border-gray-300 rounded"
+            />
+            <select
+              value={patientGender}
+              onChange={(e) => setPatientGender(e.target.value)}
+              className="w-full mb-3 p-2 border border-gray-300 rounded"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={() => setModalOpen(false)}
+                className="bg-gray-300 text-gray-800 px-4 py-2 rounded"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmBooking}
+                className="bg-[#0077b6] hover:bg-[#005f8d] text-white px-4 py-2 rounded"
+              >
+                Confirm Booking
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
