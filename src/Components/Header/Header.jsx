@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  // Simulated authentication state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [account, setAccount] = useState(
     "0x1234567890abcdef1234567890abcdef12345678"
@@ -31,40 +30,46 @@ const Header = () => {
   const logout = () => setIsAuthenticated(false);
 
   const AuthButtons = ({ isMobile = false }) => (
-    <div className={`flex ${isMobile ? "flex-col w-full" : "space-x-4"}`}>
+    <div
+      className={`flex ${
+        isMobile
+          ? "flex-col w-full gap-3 bg-white/70 p-4 rounded-xl shadow-lg backdrop-blur-md border border-blue-200"
+          : "space-x-4 items-center"
+      }`}
+    >
       {!isAuthenticated ? (
         <>
           <NavLink
             to="/signuppatient"
-            className={`bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all ${
-              isMobile ? "w-full mt-2" : ""
-            }`}
+            className={`${
+              isMobile ? "w-full" : ""
+            } bg-gradient-to-r from-purple-500 to-purple-700 text-white px-5 py-2 rounded-xl shadow hover:from-purple-600 hover:to-purple-800 transition-all font-semibold text-center`}
             onClick={isMobile ? closeMenu : undefined}
           >
-            SignUp
+            🚀 Sign Up
           </NavLink>
           <NavLink
             to="/loginpatient"
-            className={`bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-all ${
-              isMobile ? "w-full mt-2" : ""
-            }`}
+            className={`${
+              isMobile ? "w-full" : ""
+            } bg-gradient-to-r from-green-500 to-green-700 text-white px-5 py-2 rounded-xl shadow hover:from-green-600 hover:to-green-800 transition-all font-semibold text-center`}
             onClick={isMobile ? closeMenu : undefined}
           >
-            Login
+            🔐 Login
           </NavLink>
         </>
       ) : (
         <>
-          <span className="px-4 py-2 text-gray-700">
+          <span className="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl shadow">
             {`${account.substring(0, 6)}...${account.substring(38)}`}
           </span>
           <button
             onClick={logout}
-            className={`bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-all ${
-              isMobile ? "w-full mt-2" : ""
-            }`}
+            className={`${
+              isMobile ? "w-full" : ""
+            } bg-gradient-to-r from-red-500 to-red-700 text-white px-5 py-2 rounded-xl shadow hover:from-red-600 hover:to-red-800 transition-all font-semibold`}
           >
-            Logout
+            🚪 Logout
           </button>
         </>
       )}
@@ -74,227 +79,148 @@ const Header = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="bg-gray-100 shadow-lg w-full px-6 py-4 flex justify-between items-center relative z-40 md:px-10">
-        {/* Logo */}
-        <div className="flex items-center">
-          <img
-            src="./Images/HealthCare.png"
-            className="h-16 md:h-16 mr-4"
-            alt="Health Logo"
-          />
-        </div>
-
-        {/* Hamburger Menu for Mobile */}
-        <div className="text-2xl cursor-pointer md:hidden" onClick={toggleMenu}>
-          {isMenuOpen ? "✖" : "☰"}
-        </div>
-
-        {/* Navigation Links */}
-        <ul
-          className={`absolute md:static top-full left-0 w-full bg-white md:bg-transparent md:flex md:space-x-8 p-4 md:p-0 shadow-md md:shadow-none rounded-md md:rounded-none transition-all duration-300 ${
-            isMenuOpen ? "block" : "hidden"
-          }`}
-        >
-          <li>
-            <NavLink
-              to="/"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `block p-3 font-semibold rounded-md ${
-                  isActive ? "text-blue-600" : "text-gray-800"
-                } hover:text-blue-600 transition-all`
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              onClick={closeMenu}
-              className="block p-3 font-semibold text-gray-800 hover:text-blue-600"
-            >
-              About Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `block p-3 font-semibold rounded-md ${
-                  isActive ? "text-blue-600" : "text-gray-800"
-                } hover:text-blue-600 transition-all`
-              }
-            >
-              Contact Us
-            </NavLink>
-          </li>
-          <div className="relative inline-block text-left" ref={dropdownRef}>
-            <button
-              onClick={toggleDropdownMenu}
-              className="cursor-pointer text-black px-4 py-3 font-semibold rounded-2xl"
-            >
-              Our Services
-            </button>
-            {isDropdownOpen && (
-              <div className="absolute mt-2 w-80 bg-white rounded-2xl shadow-xl max-h-80 overflow-y-auto">
-                <ul>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/bookappointment"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      1-Online appointment systems
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/onlinemedicinedelivery"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      2-Online Medicine Delivery
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/bloodhomescreen"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      3-Blood Bank Store and Blood Donate tracking system
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/ai"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      4-AI generated prescription according to the symptoms
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/onlinehomeservicetreatment"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      5-Online Home service Treatment
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/electronichealthrecord"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      6-Electronic Health Record (EHRs)
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/telemedicine"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      7-Telemedicine
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/practicemanagementportalfordoctors"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      8-Practice management portal for doctors
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/electronicprescriptionsystem"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      9-Electronic Prescription System
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/walkthrough"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      10-Ambulance Service
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/caretakerhomepage"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      11-Caretaker Service
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/diagnosishomepage"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      12-Diagnosis Service
-                    </NavLink>
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100">
-                    <NavLink
-                      to="/nursingservicehome"
-                      onClick={() => {
-                        toggleDropdownMenu();
-                        closeMenu();
-                      }}
-                    >
-                      13-Nursing Service
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
-            )}
+      <nav className="bg-white/70 backdrop-blur-md border-b border-gray-300 shadow-md px-4 py-3 md:px-10 w-full z-50 relative">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="./Images/HealthCare.png"
+              className="h-14 md:h-16"
+              alt="Health Logo"
+            />
+            <span className="text-xl md:text-2xl font-bold text-blue-700 tracking-wide">
+              HealthCare+
+            </span>
           </div>
-          {/* Login/Signup Buttons for Mobile */}
-          <li className="block md:hidden">
-            <AuthButtons isMobile />
-          </li>
-        </ul>
-        {/* Login/Signup Buttons for Desktop */}
-        <div className="hidden md:flex">
-          <AuthButtons />
+
+          {/* Hamburger */}
+          <div
+            className="text-3xl md:hidden text-blue-700"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? "✖" : "☰"}
+          </div>
+
+          {/* Links */}
+          <ul
+            className={`absolute md:static top-full left-2 right-2 mt-2 md:mt-0 w-[calc(100%-1rem)] md:w-auto
+              ${
+                isMenuOpen ? "block" : "hidden"
+              } md:flex md:items-center md:space-x-8
+              bg-white md:bg-transparent border border-gray-200 md:border-none
+              shadow-2xl md:shadow-none rounded-2xl md:rounded-none
+              p-4 md:p-0 transition-all duration-500 ease-in-out transform md:opacity-100 md:scale-100`}
+          >
+            {/* Navigation Links */}
+            {[
+              { to: "/", label: "Home" },
+              { to: "/about", label: "About Us" },
+              { to: "/contact", label: "Contact Us" },
+            ].map(({ to, label }) => (
+              <li key={label}>
+                <NavLink
+                  to={to}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `group flex items-center gap-2 px-4 py-3 font-semibold rounded-xl ${
+                      isActive ? "text-blue-700" : "text-gray-800"
+                    } hover:text-blue-700 hover:bg-blue-100/30 hover:backdrop-blur-sm transition-all duration-300`
+                  }
+                >
+                  <span>{label}</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    ➡️
+                  </span>
+                </NavLink>
+              </li>
+            ))}
+
+            {/* Dropdown */}
+            <div className="relative inline-block text-left" ref={dropdownRef}>
+              <button
+                onClick={toggleDropdownMenu}
+                className="flex items-center gap-2 text-gray-800 font-semibold hover:text-blue-700 px-4 py-3"
+              >
+                Our Services <span className="text-sm">▼</span>
+              </button>
+              {isDropdownOpen && (
+                <div className="transition-all duration-300 ease-in-out transform scale-100 opacity-100">
+                  <ul className="divide-y divide-gray-100 bg-white border border-gray-200 rounded-xl mt-2 shadow-xl max-h-96 overflow-y-auto w-80 z-50">
+                    {[
+                      {
+                        path: "/bookappointment",
+                        label: "1-Online Appointment System",
+                      },
+                      {
+                        path: "/onlinemedicinedelivery",
+                        label: "2-Online Medicine Delivery",
+                      },
+                      {
+                        path: "/bloodhomescreen",
+                        label: "3-Blood Bank & Donate Tracker",
+                      },
+                      { path: "/ai", label: "4-AI Prescription Generator" },
+                      {
+                        path: "/onlinehomeservicetreatment",
+                        label: "5-Home Service Treatment",
+                      },
+                      {
+                        path: "/electronichealthrecord",
+                        label: "6-Electronic Health Record",
+                      },
+                      { path: "/telemedicine", label: "7-Telemedicine" },
+                      {
+                        path: "/practicemanagementportalfordoctors",
+                        label: "8-Doctor Practice Portal",
+                      },
+                      {
+                        path: "/electronicprescriptionsystem",
+                        label: "9-Electronic Prescription",
+                      },
+                      { path: "/walkthrough", label: "10-Ambulance Service" },
+                      {
+                        path: "/caretakerhomepage",
+                        label: "11-Caretaker Service",
+                      },
+                      {
+                        path: "/diagnosishomepage",
+                        label: "12-Diagnosis Service",
+                      },
+                      {
+                        path: "/nursingservicehome",
+                        label: "13-Nursing Service",
+                      },
+                    ].map(({ path, label }) => (
+                      <li
+                        key={label}
+                        className="px-5 py-3 hover:bg-blue-50 hover:text-blue-700 transition-all text-sm font-medium"
+                      >
+                        <NavLink
+                          to={path}
+                          onClick={() => {
+                            toggleDropdownMenu();
+                            closeMenu();
+                          }}
+                        >
+                          {label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Auth Buttons */}
+            <li className="block md:hidden mt-4">
+              <AuthButtons isMobile />
+            </li>
+          </ul>
+
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex">
+            <AuthButtons />
+          </div>
         </div>
       </nav>
     </>

@@ -87,55 +87,46 @@ function App() {
   };
 
   return (
-      <BrowserRouter>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Body />}>
-            <Route index element={<Landing />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="loginpatient" element={<LoginPatient />} />
-            <Route path="signuppatient" element={<SignupPatient />} />
-            <Route path="delivery-success" element={<DeliverySuccess />} />
+    <BrowserRouter>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Body />}>
+          <Route index element={<Landing />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="loginpatient" element={<LoginPatient />} />
+          <Route path="signuppatient" element={<SignupPatient />} />
+          <Route path="delivery-success" element={<DeliverySuccess />} />
 
-            {/* Protected Patient Routes */}
-            <Route path="patient" element={<Patient />} />
-            <Route path="patientdash" element={<PatientDashboard />} />
-            <Route path="bookappointment" element={<BookAppointment />} />
-            <Route path="bloodhomescreen" element={<BloodHomeScreen />} />
-            <Route path="forecastdashboard" element={<ForecastDashboard />} />
-            <Route path="blockchain" element={<BlockchainLogViewer />} />
-            <Route
-              path="electronichealthrecord"
-              element={<ElectronicHealthRecord />}
-            />
-            <Route path="allrecord" element={<AllRecord />} />
-            <Route path="reportpage" element={<Reportpage />} />
-            <Route
-              path="electronicprescriptionsystem"
-              element={<ElectronicPrescriptionSystem />}
-            />
-            <Route
-              path="onlinehomeservicetreatment"
-              element={<OnlineHomeServiceTreatment />}
-            />
-            <Route
-              path="onlinemedicinedelivery"
-              element={<OnlineMedicineDelivery />}
-            />
-            <Route path="telemedicine" element={<Telemedicine />} />
-            <Route path="confirmation" element={<TeleConfirmationPage />} />
-
-            <Route path="ai" element={<AI />} />
-          </Route>
-
-          {/* Protected Doctor Route */}
+          {/* Protected Patient Routes */}
+          <Route path="patient" element={<Patient />} />
+          <Route path="patientdash" element={<PatientDashboard />} />
+          <Route path="bookappointment" element={<BookAppointment />} />
+          <Route path="bloodhomescreen" element={<BloodHomeScreen />} />
+          <Route path="forecastdashboard" element={<ForecastDashboard />} />
+          <Route path="blockchain" element={<BlockchainLogViewer />} />
           <Route
-            path="practicemanagementportalfordoctors"
-            element={
-                <Body />
-            }
+            path="electronichealthrecord"
+            element={<ElectronicHealthRecord />}
           />
+          <Route path="allrecord" element={<AllRecord />} />
+          <Route path="reportpage" element={<Reportpage />} />
+          <Route
+            path="electronicprescriptionsystem"
+            element={<ElectronicPrescriptionSystem />}
+          />
+          <Route
+            path="onlinehomeservicetreatment"
+            element={<OnlineHomeServiceTreatment />}
+          />
+          <Route
+            path="onlinemedicinedelivery"
+            element={<OnlineMedicineDelivery />}
+          />
+          <Route path="telemedicine" element={<Telemedicine />} />
+          <Route path="confirmation" element={<TeleConfirmationPage />} />
+
+          <Route path="ai" element={<AI />} />
 
           {/* Ambulance Routes */}
           <Route path="walkthrough" element={<AmbulanceServiceWalkthrough />} />
@@ -169,7 +160,6 @@ function App() {
             element={<AmbulanceServiceAmbulancetype />}
           />
           <Route path="payment" element={<AmbulanceServicePayment />} />
-
           {/* Caretaker */}
           <Route path="caretakerhomepage" element={<CaretakerHomepage />} />
           <Route
@@ -270,8 +260,12 @@ function App() {
               </div>
             }
           />
-        </Routes>
-      </BrowserRouter>
+        </Route>
+
+        {/* Protected Doctor Route */}
+        <Route path="practicemanagementportalfordoctors" element={<Body />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

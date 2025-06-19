@@ -1,239 +1,287 @@
-.landing {
-    height: 100vh;
-    
-  }
-  
-  .landingimg {
-    width: 100%;
-    height: 50%;
-    position: relative;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  
-  .landingimg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    
-  }
+/* Modernized Landing Page Styles */
 
-  .overlayText {
-    position: absolute;
-    top: 40%;
-    left: 20%;
-    width: 40%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    
-    max-width: 80%;
-  }
-  .main{
-    font-size:24px ;
-    color: #001122;
-    font-weight: 400;
-  }
-.mainp{
-  font-size: 16px;
-  color: black;
+.landing {
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e7f1);
+  animation: fadeIn 1s ease-in;
 }
 
+.landingimg {
+  width: 100%;
+  height: 55vh;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 8px solid #0077b6;
+  animation: slideDown 1s ease-in-out;
+}
 
+.landingimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+  transition: transform 0.5s ease;
+}
+
+.landingimg:hover img {
+  transform: scale(1.05);
+}
+
+.overlayText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  animation: zoomIn 1s ease-in-out;
+}
+
+.main {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.mainp {
+  font-size: 16px;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
 
 .landingText {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 40px 20px;
+  font-size: 1.4rem;
   text-align: center;
-  font-size: 1.5rem;
-  
-  padding: 20px;
+  animation: fadeInUp 1s ease-in;
 }
 
 .landingText span {
-  max-width: 80%;
-  display: inline-block;
+  max-width: 85%;
+  margin: auto;
+  display: block;
+  line-height: 1.8;
+  color: #333;
 }
 
-
 .highlight1 {
-  color: #db806c; 
+  color: #ff6b6b;
+  font-weight: bold;
 }
 
 .highlight2 {
-  color: #28a745; 
+  color: #38b000;
+  font-weight: bold;
 }
 
 .highlight3 {
-  color: #007bff; 
+  color: #1e90ff;
+  font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .landingText {
-    font-size: 1.2rem;
-    padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .landingText {
-    font-size: 1rem;
-    padding: 10px;
-  }
-}
-
-  @media (max-width: 768px) {
-    .overlayText {
-      font-size: 14px;
-      padding: 10px;
-    }
-  
-    .overlayText h1 {
-      font-size: 18px;
-    }
-  
-    .overlayText p {
-      font-size: 14px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .overlayText {
-      font-size: 12px;
-      padding: 8px;
-    }
-  
-    .overlayText h1 {
-      font-size: 16px;
-    }
-  
-    .overlayText p {
-      font-size: 12px;
-    }
-  }
-  .boxx{
-    height: 200px;
-    width: 300px;
-    color: red;
-    background-color: yellow;
-  }
-
-  /* this is the css for the blog content */
-
-  .container {
-    text-align: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .blogGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .blogCard {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .blogCard:hover {
-    transform: translateY(-5px);
-  }
-  
-  .blogImage {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .blogContent {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .dateBadge {
-    background-color: #4caf50;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 50%;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    position: relative;
-    top: -20px;
-  }
-  
-  .blogTitle {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: -10px;
-  }
-  
-  .learnMore {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .learnMore:hover {
-    background-color: #388e3c;
-  }
-  
-/* this is the code for the section */
 .statsContainer {
+  background: linear-gradient(90deg, #caf0f8, #ade8f4);
+  padding: 60px 20px;
   text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(to bottom, #fff, #d9f6fc);
+  animation: fadeIn 1.2s ease-in-out;
 }
 
 .statsTitle {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #023e8a;
 }
 
 .statsGrid {
   display: flex;
-  justify-content: center;
-  gap: 60px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
 }
 
 .stat {
-  text-align: center;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-8px);
 }
 
 .statNumber {
-  font-size: 40px;
-  font-weight: bold;
+  font-size: 36px;
   color: #0077b6;
+  font-weight: bold;
 }
 
 .statText {
   font-size: 16px;
-  margin-top: 5px;
+  color: #555;
+  margin-top: 10px;
+}
+
+.container {
+  background-color: #f4f9fd;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #14213d;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.blogCard {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.blogCard:hover {
+  transform: translateY(-10px);
+}
+
+.blogImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: filter 0.3s ease-in-out;
+}
+
+.blogCard:hover .blogImage {
+  filter: brightness(0.9);
+}
+
+.blogContent {
+  padding: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.dateBadge {
+  background-color: #007f5f;
+  color: white;
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.blogTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 30px 0 10px 0;
+  color: #343a40;
+}
+
+.learnMore {
+  background-color: #0077b6;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learnMore:hover {
+  background-color: #005f87;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    font-size: 20px;
+  }
+  .mainp {
+    font-size: 14px;
+  }
+  .landingText {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlayText {
+    padding: 15px;
+  }
+  .main {
+    font-size: 18px;
+  }
+  .mainp {
+    font-size: 12px;
+  }
+  .landingText {
+    font-size: 1rem;
+  }
 }
