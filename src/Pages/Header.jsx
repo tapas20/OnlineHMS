@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useWeb3 } from "../../context/Web3Context";
 
 const Header = () => {
-  const { account, logout, isAuthenticated } = useWeb3();
+  // Simulate authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [account, setAccount] = useState(
+    "0x1234567890abcdef1234567890abcdef12345678"
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const toggleDropdownMenu = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleDropdownMenu = () => setIsDropdownOpen(!isDropdownOpen);
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -20,18 +21,14 @@ const Header = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const login = () => setIsAuthenticated(true);
+  const logout = () => setIsAuthenticated(false);
 
   const AuthButtons = ({ isMobile = false }) => (
     <div className={`flex ${isMobile ? "flex-col w-full" : "space-x-4"}`}>
@@ -55,6 +52,15 @@ const Header = () => {
           >
             Login
           </NavLink>
+          {/* Demo login button */}
+          <button
+            onClick={login}
+            className={`bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition-all ${
+              isMobile ? "w-full mt-2" : ""
+            }`}
+          >
+            Demo Login
+          </button>
         </>
       ) : (
         <>
@@ -76,9 +82,7 @@ const Header = () => {
 
   return (
     <>
-      {/* Navbar */}
       <nav className="bg-gray-100 shadow-lg w-full px-6 py-4 flex justify-between items-center relative z-40 md:px-10">
-        {/* Logo */}
         <div className="flex items-center">
           <img
             src="./Images/HealthCare.png"
@@ -86,13 +90,9 @@ const Header = () => {
             alt="Health Logo"
           />
         </div>
-
-        {/* Hamburger Menu for Mobile */}
         <div className="text-2xl cursor-pointer md:hidden" onClick={toggleMenu}>
           {isMenuOpen ? "✖" : "☰"}
         </div>
-
-        {/* Navigation Links */}
         <ul
           className={`absolute md:static top-full left-0 w-full bg-white md:bg-transparent md:flex md:space-x-8 p-4 md:p-0 shadow-md md:shadow-none rounded-md md:rounded-none transition-all duration-300 ${
             isMenuOpen ? "block" : "hidden"
@@ -246,14 +246,10 @@ const Header = () => {
               </div>
             )}
           </div>
-
-          {/* Login/Signup Buttons for Mobile */}
           <li className="block md:hidden">
             <AuthButtons isMobile />
           </li>
         </ul>
-
-        {/* Login/Signup Buttons for Desktop */}
         <div className="hidden md:flex">
           <AuthButtons />
         </div>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { sha256 } from "js-sha256";
-import { useWeb3 } from "../../../context/Web3Context";
 
 function LoginPatient() {
   const [formData, setFormData] = useState({
@@ -13,56 +12,29 @@ function LoginPatient() {
   const [success, setSuccess] = useState("");
 
   const navigate = useNavigate();
-  const { web3, contract, login, initWeb3 } = useWeb3();
 
-  const hashPassword = (password) => {
-    return sha256(password);
-  };
-
+  // Simulated login function (replace with real logic)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setSuccess("");
 
-    try {
-      if (!web3 || !contract) {
-        await initWeb3();
-        if (!web3 || !contract) {
-          throw new Error("Failed to connect to blockchain");
-        }
+    // Simulate async login
+    setTimeout(() => {
+      // Demo: Accept any userId/password where password is "password"
+      if (!formData.userId) {
+        setError("User ID is required");
+      } else if (formData.password !== "password") {
+        setError("Invalid credentials");
+      } else {
+        setSuccess("Login successful! Redirecting...");
+        setTimeout(() => {
+          navigate("/patientdash");
+        }, 1500);
       }
-
-      // Password-based login
-      const patientAddress = await contract.methods
-        .getPatientByEmail(formData.userId)
-        .call();
-
-      if (patientAddress === "0x0000000000000000000000000000000000000000") {
-        throw new Error("User not found");
-      }
-
-      const isValid = await contract.methods
-        .verifyPassword(formData.userId, hashPassword(formData.password))
-        .call();
-
-      if (!isValid) {
-        throw new Error("Invalid credentials");
-      }
-
-      // Call login function from context
-      login();
-      setSuccess("Login successful! Redirecting...");
-
-      setTimeout(() => {
-        navigate("/patientdash");
-      }, 1500);
-    } catch (err) {
-      console.error("Login failed:", err);
-      setError(err.message || "Login failed. Please try again.");
-    } finally {
       setLoading(false);
-    }
+    }, 1000);
   };
 
   return (

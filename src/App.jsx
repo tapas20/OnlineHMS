@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Body from "./Body";
-import { Web3Provider } from "./context/Web3Context";
-import BlockchainAuthMiddleware from "./Middleware/BlockchainAuthMiddleware";
 
 import Landing from "./Pages/Landing/Landing";
 import About from "./Pages/About/About";
@@ -89,7 +87,6 @@ function App() {
   };
 
   return (
-    <Web3Provider>
       <BrowserRouter>
         <Routes>
           {/* Public Routes */}
@@ -136,9 +133,7 @@ function App() {
           <Route
             path="practicemanagementportalfordoctors"
             element={
-              <BlockchainAuthMiddleware>
                 <Body />
-              </BlockchainAuthMiddleware>
             }
           />
 
@@ -277,7 +272,6 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-    </Web3Provider>
   );
 }
 

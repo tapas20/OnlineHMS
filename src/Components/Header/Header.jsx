@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useWeb3 } from "../../context/Web3Context";
 
 const Header = () => {
-  const { account, logout, isAuthenticated } = useWeb3();
+  // Simulated authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [account, setAccount] = useState(
+    "0x1234567890abcdef1234567890abcdef12345678"
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const toggleDropdownMenu = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleDropdownMenu = () => setIsDropdownOpen(!isDropdownOpen);
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -20,18 +21,14 @@ const Header = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const login = () => setIsAuthenticated(true);
+  const logout = () => setIsAuthenticated(false);
 
   const AuthButtons = ({ isMobile = false }) => (
     <div className={`flex ${isMobile ? "flex-col w-full" : "space-x-4"}`}>
@@ -242,7 +239,6 @@ const Header = () => {
                       9-Electronic Prescription System
                     </NavLink>
                   </li>
-
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <NavLink
                       to="/walkthrough"
@@ -291,13 +287,11 @@ const Header = () => {
               </div>
             )}
           </div>
-
           {/* Login/Signup Buttons for Mobile */}
           <li className="block md:hidden">
             <AuthButtons isMobile />
           </li>
         </ul>
-
         {/* Login/Signup Buttons for Desktop */}
         <div className="hidden md:flex">
           <AuthButtons />
