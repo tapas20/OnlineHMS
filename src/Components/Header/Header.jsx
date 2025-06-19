@@ -78,7 +78,6 @@ const Header = () => {
 
   return (
     <>
-      {/* Navbar */}
       <nav className="bg-white/70 backdrop-blur-md border-b border-gray-300 shadow-md px-4 py-3 md:px-10 w-full z-50 relative">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -93,7 +92,7 @@ const Header = () => {
             </span>
           </div>
 
-          {/* Hamburger */}
+          {/* Hamburger for mobile */}
           <div
             className="text-3xl md:hidden text-blue-700"
             onClick={toggleMenu}
@@ -101,17 +100,15 @@ const Header = () => {
             {isMenuOpen ? "✖" : "☰"}
           </div>
 
-          {/* Links */}
+          {/* Navigation Links */}
           <ul
             className={`absolute md:static top-full left-2 right-2 mt-2 md:mt-0 w-[calc(100%-1rem)] md:w-auto
-              ${
-                isMenuOpen ? "block" : "hidden"
-              } md:flex md:items-center md:space-x-8
+              ${isMenuOpen ? "block" : "hidden"}
+              md:flex md:items-center md:space-x-8
               bg-white md:bg-transparent border border-gray-200 md:border-none
               shadow-2xl md:shadow-none rounded-2xl md:rounded-none
               p-4 md:p-0 transition-all duration-500 ease-in-out transform md:opacity-100 md:scale-100`}
           >
-            {/* Navigation Links */}
             {[
               { to: "/", label: "Home" },
               { to: "/about", label: "About Us" },
@@ -136,7 +133,7 @@ const Header = () => {
             ))}
 
             {/* Dropdown */}
-            <div className="relative inline-block text-left" ref={dropdownRef}>
+            <li className="relative" ref={dropdownRef}>
               <button
                 onClick={toggleDropdownMenu}
                 className="flex items-center gap-2 text-gray-800 font-semibold hover:text-blue-700 px-4 py-3"
@@ -144,8 +141,8 @@ const Header = () => {
                 Our Services <span className="text-sm">▼</span>
               </button>
               {isDropdownOpen && (
-                <div className="transition-all duration-300 ease-in-out transform scale-100 opacity-100">
-                  <ul className="divide-y divide-gray-100 bg-white border border-gray-200 rounded-xl mt-2 shadow-xl max-h-96 overflow-y-auto w-80 z-50">
+                <div className="absolute left-0 mt-2 z-50 w-80 bg-white border border-gray-200 rounded-xl shadow-xl max-h-96 overflow-y-auto">
+                  <ul className="divide-y divide-gray-100">
                     {[
                       {
                         path: "/bookappointment",
@@ -209,7 +206,7 @@ const Header = () => {
                   </ul>
                 </div>
               )}
-            </div>
+            </li>
 
             {/* Mobile Auth Buttons */}
             <li className="block md:hidden mt-4">
