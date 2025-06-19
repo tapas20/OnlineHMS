@@ -184,7 +184,7 @@ function App() {
             element={<DiagnosisBooking onBook={handleNewBooking} />}
           />
           <Route path="diagnosisreport" element={<DiagnosisOnlinereport />} />
-
+          <Route path="practicemanagementportalfordoctors" element={<Body />} />s
           {/* Nursing Service Routes */}
           <Route
             path="*"
@@ -261,9 +261,6 @@ function App() {
             }
           />
         </Route>
-
-        {/* Protected Doctor Route */}
-        <Route path="practicemanagementportalfordoctors" element={<Body />} />
       </Routes>
     </BrowserRouter>
   );
