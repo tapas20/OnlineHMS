@@ -63,7 +63,7 @@ const Header = () => {
           <span className="px-4 py-2 text-gray-700 bg-gray-100 rounded-xl shadow">
             {`${account.substring(0, 6)}...${account.substring(38)}`}
           </span>
-          <button
+          <button 
             onClick={logout}
             className={`${
               isMobile ? "w-full" : ""
