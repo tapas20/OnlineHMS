@@ -176,7 +176,7 @@ const Home = () => {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-gray-50 hover:bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+                className="bg-white hover:bg-gray-200 rounded-xl p-8 shadow-sm hover:shadow-md  border border-gray-400 transition-transform duration-300 hover:-translate-y-2"
               >
                 <div className="text-center">
                   {service.icon}
@@ -215,7 +215,7 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">EliteCare Nursing</h3>
+              <h3 className="text-xl font-bold mb-4"> Nursing</h3>
               <p className="text-gray-400">
                 Providing exceptional in-home nursing care with compassion and
                 professionalism.
@@ -269,7 +269,7 @@ const Home = () => {
           </div>
           <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
             <p>
-              © {new Date().getFullYear()} EliteCare Nursing. All rights
+              © {new Date().getFullYear()}  Nursing Care. All rights
               reserved.
             </p>
           </div>
