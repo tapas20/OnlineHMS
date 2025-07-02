@@ -52,21 +52,16 @@ import CaretakerConfirmation from "./Pages/Dropdownmenu/caretaker/CaretakerConfi
 
 // Diagnosis
 import DiagnosisHomepage from "./Pages/Dropdownmenu/diagnosis/DiagnosisHomepage";
-import DiagnosisLogin from "./Pages/Dropdownmenu/diagnosis/DiagnosisLogin";
-import DiagnosisRegister from "./Pages/Dropdownmenu/diagnosis/DiagnosisRegister";
-import DiagnosisDashboard from "./Pages/Dropdownmenu/diagnosis/DiagnosisDashboard";
+
+
 import DiagnosisBooking from "./Pages/Dropdownmenu/diagnosis/DiagnosisBooking";
-import DiagnosisOnlinereport from "./Pages/Dropdownmenu/diagnosis/DiagnosisOnlinereport";
+
 
 // Nursing service (uncommented and imported properly)
 import NursingServiceHome from "./Pages/Dropdownmenu/nursing/Home";
 import Booking from "./Pages/Dropdownmenu/Nursing/Booking";
 function App() {
-  const [bookings, setBookings] = useState([]);
 
-  const handleNewBooking = (bookingData) => {
-    setBookings([...bookings, bookingData]);
-  };
 
   return (
     <BrowserRouter>
@@ -155,18 +150,14 @@ function App() {
 
           {/* Diagnosis */}
           <Route path="diagnosishomepage" element={<DiagnosisHomepage />} />
-          <Route path="diagnosislogin" element={<DiagnosisLogin />} />
-          <Route path="diagnosisregister" element={<DiagnosisRegister />} />
-          <Route
-            path="diagnosisdashboard"
-            element={<DiagnosisDashboard bookings={bookings} />}
-          />
+         
+         
           <Route
             path="diagnosisbooking"
-            element={<DiagnosisBooking onBook={handleNewBooking} />}
+            element={<DiagnosisBooking  />}
           />
-          <Route path="diagnosisreport" element={<DiagnosisOnlinereport />} />
-          <Route path="practicemanagementportalfordoctors" element={<Body />} />
+        
+          <Route path="practicemanagementportalfordoctors" element={<Body />} />s
           {/* Nursing Service Routes */}
           <Route path="NursingServiceHome" element={<NursingServiceHome/>}/>
           <Route path="Booking" element={<Booking/>}/>
