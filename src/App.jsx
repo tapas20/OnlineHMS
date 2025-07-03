@@ -59,25 +59,7 @@ import DiagnosisBooking from "./Pages/Dropdownmenu/diagnosis/DiagnosisBooking";
 
 // Nursing service (uncommented and imported properly)
 import NursingServiceHome from "./Pages/Dropdownmenu/nursing/Home";
-import NursingServiceAbout from "./Pages/Dropdownmenu/nursing/About";
-import NursingServiceContact from "./Pages/Dropdownmenu/nursing/Contact";
-import NursingServicePatientDashboard from "./Pages/Dropdownmenu/nursing/PatientDashboard";
-import NursingServiceNurseList from "./Pages/Dropdownmenu/nursing/NurseList";
-import NursingServiceSearchNurses from "./Pages/Dropdownmenu/nursing/SearchNurses";
-import NursingServiceNurseProfile from "./Pages/Dropdownmenu/nursing/NurseProfile";
-import NursingServiceBookingPage from "./Pages/Dropdownmenu/nursing/BookingPage";
-import NursingServiceConfirmationPage from "./Pages/Dropdownmenu/nursing/ConfirmationPage";
-import NursingServiceBookingConfirmation from "./Pages/Dropdownmenu/nursing/BookingConfirmation";
-import NursingServiceNurseRegister from "./Pages/Dropdownmenu/nursing/NurseRegister";
-import NursingServiceNurseLogin from "./Pages/Dropdownmenu/nursing/NurseLogin";
-import NursingServiceNurseDashboard from "./Pages/Dropdownmenu/nursing/NurseDashboard";
-import NursingServiceNurseProfile2 from "./Pages/Dropdownmenu/nursing/NurseProfile2";
-import NursingServiceBookingStatus from "./Pages/Dropdownmenu/nursing/BookingStatus";
-import NursingServiceNotFound from "./Pages/Dropdownmenu/nursing/NotFound";
-
-import Navbar from "./Pages/Dropdownmenu/nursing/Navbar";
-import Footer from "./Pages/Dropdownmenu/nursing/Footer";
-
+import Booking from "./Pages/Dropdownmenu/Nursing/Booking";
 function App() {
 
 
@@ -177,80 +159,8 @@ function App() {
         
           <Route path="practicemanagementportalfordoctors" element={<Body />} />s
           {/* Nursing Service Routes */}
-          <Route
-            path="*"
-            element={
-              <div className="flex flex-col min-h-screen">
-                <Navbar />
-                <main className="flex-grow">
-                  <Routes>
-                    <Route
-                      path="/nursingservicehome"
-                      element={<NursingServiceHome />}
-                    />
-                    <Route
-                      path="nursing/about"
-                      element={<NursingServiceAbout />}
-                    />
-                    <Route
-                      path="nursing/contact"
-                      element={<NursingServiceContact />}
-                    />
-                    <Route
-                      path="patient/dashboard"
-                      element={<NursingServicePatientDashboard />}
-                    />
-                    <Route
-                      path="find/nurses"
-                      element={<NursingServiceNurseList />}
-                    />
-                    <Route
-                      path="patient/search-nurses"
-                      element={<NursingServiceSearchNurses />}
-                    />
-                    <Route
-                      path="nurse/:id"
-                      element={<NursingServiceNurseProfile />}
-                    />
-                    <Route
-                      path="book/:id"
-                      element={<NursingServiceBookingPage />}
-                    />
-                    <Route
-                      path="confirmation"
-                      element={<NursingServiceConfirmationPage />}
-                    />
-                    <Route
-                      path="patient/booking-confirmation"
-                      element={<NursingServiceBookingConfirmation />}
-                    />
-                    <Route
-                      path="nurse/dashboard"
-                      element={<NursingServiceNurseDashboard />}
-                    />
-                    <Route
-                      path="nurse/register"
-                      element={<NursingServiceNurseRegister />}
-                    />
-                    <Route
-                      path="nurse/login"
-                      element={<NursingServiceNurseLogin />}
-                    />
-                    <Route
-                      path="nurse/profile2"
-                      element={<NursingServiceNurseProfile2 />}
-                    />
-                    <Route
-                      path="patient/booking-status"
-                      element={<NursingServiceBookingStatus />}
-                    />
-                    <Route path="*" element={<NursingServiceNotFound />} />
-                  </Routes>
-                </main>
-                <Footer />
-              </div>
-            }
-          />
+          <Route path="NursingServiceHome" element={<NursingServiceHome/>}/>
+          <Route path="Booking" element={<Booking/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
